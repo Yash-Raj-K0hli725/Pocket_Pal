@@ -9,4 +9,8 @@
         android:name="com.example.pocketpal.SplashActivity.splashFrag.introPage"
         android:label="introPage1"
         tools:layout="@layout/fragment_intro_page"/>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.example.pocketpal.SplashActivity.splashFrag.RegisterFragment"
+        android:label="RegisterFragment" />
 </navigation>
