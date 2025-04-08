@@ -6,10 +6,11 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="sign_up">Sign up</string>
+    <string name="register">Register</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="terms_and_privacy">I accept the terms and privacy policy</string>
     <string name="logo">logo</string>
+    <string name="fullName">Full Name</string>
     <string name="begin">begin</string>
 </resources>
