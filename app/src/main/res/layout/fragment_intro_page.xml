@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/introMain"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".SplashActivity.splashFrag.introPage">
@@ -37,14 +38,75 @@
         <ImageView
             android:id="@+id/card"
             android:layout_width="0dp"
-            android:layout_height="240dp"
+            android:layout_height="0dp"
             android:rotation="-90"
             android:src="@drawable/intro_deb_card"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/initialText1"
             app:layout_constraintEnd_toStartOf="@id/cardHelper"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toTopOf="@id/initialText1"
             app:layout_constraintVertical_bias="0.5" />
+
+        <TextView
+            android:id="@+id/initialText1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/alata"
+            android:padding="15dp"
+            android:text="@string/initialText1"
+            android:textAlignment="textStart"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/mid"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/cardHelper"
+            app:layout_constraintTop_toTopOf="@id/mid" />
+
+        <TextView
+            android:id="@+id/initialText2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/alata"
+            android:padding="20dp"
+            android:text="@string/initialText2"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/card" />
+
+        <TextView
+            android:id="@+id/initialText3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/alata"
+            android:padding="17dp"
+            android:text="@string/initialText3"
+            android:textSize="15sp"
+            android:gravity="center"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintTop_toBottomOf="@id/mid"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/begin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/begin"
+            android:src="@drawable/btn_begin"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.96"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.96"
+            app:shapeAppearance="@style/Widget.Design.FloatingActionButton" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/cardHelper"
@@ -53,6 +115,19 @@
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.4" />
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/mid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/cardTop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.3" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

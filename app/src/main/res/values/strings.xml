@@ -13,4 +13,7 @@
     <string name="logo">logo</string>
     <string name="fullName">Full Name</string>
     <string name="begin">begin</string>
+    <string name="initialText1">Simplify the way you manage your expenses.</string>
+    <string name="initialText2">Get a clear overview and start making smarter financial decisions today</string>
+    <string name="initialText3">Ever wonder where your hard-earned money disappears? Uncover your spending patterns and gain valuable insights</string>
 </resources>

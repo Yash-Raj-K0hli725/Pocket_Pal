@@ -1,14 +1,26 @@
 package com.example.pocketpal.SplashActivity.splashFrag.introVPFrags
 
-import androidx.fragment.app.Fragment
-import androidx.viewpager2.adapter.FragmentStateAdapter
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
+import com.example.pocketpal.R
 
-class introViewPagerAdapter(context:Fragment,private val introVPFrags:List<Fragment>):FragmentStateAdapter(context) {
+class introViewPagerAdapter(val items: List<Int>) :
+    RecyclerView.Adapter<introViewPagerAdapter.ViewPagerViewHolder>() {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewPagerViewHolder {
+        return ViewPagerViewHolder(
+            LayoutInflater.from(parent.context).inflate(R.layout.intro_vpager, parent, false)
+        )
+    }
+
+    override fun onBindViewHolder(holder: ViewPagerViewHolder, position: Int) {
+
+    }
+
     override fun getItemCount(): Int {
-        return introVPFrags.size
+        return items.size
     }
 
-    override fun createFragment(position: Int): Fragment {
-        return introVPFrags[position]
-    }
+    inner class ViewPagerViewHolder(item: View) : RecyclerView.ViewHolder(item)
 }
