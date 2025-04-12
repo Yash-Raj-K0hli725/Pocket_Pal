@@ -29,18 +29,19 @@ class introPage : Fragment() {
         bind.vpIntro.adapter = introViewPagerAdapter(listOf(0, 1))
         TabLayoutMediator(bind.tabLay, bind.vpIntro) { _, _ ->
         }.attach()
-
         bind.tabLay.addOnTabSelectedListener(object : OnTabSelectedListener {
-            val fadeIn = AnimationUtils.loadAnimation(requireContext(),R.anim.fade_in)
+
+            val fadeIn = AnimationUtils.loadAnimation(requireContext(), R.anim.fade_in)
             override fun onTabSelected(tab: TabLayout.Tab?) {
-                when(tab?.position){
-                    0->{
+                when (tab?.position) {
+                    0 -> {
                         animateCard(0)
                         bind.begin.visibility = View.GONE
                         bind.initialText3.visibility = View.GONE
                         bind.begin.setOnClickListener(null)
                     }
-                    1-> {
+
+                    1 -> {
                         animateCard(1)
                         setNavigation()
                         bind.initialText3.visibility = View.VISIBLE
@@ -57,6 +58,7 @@ class introPage : Fragment() {
 
             }
         })
+
         // Inflate the layout for this fragment
         return bind.root
     }
@@ -109,8 +111,7 @@ class introPage : Fragment() {
                 .setDuration(400)
                 .alpha(1f)
                 .start()
-        }
-        else{
+        } else {
             constraintSet.connect(
                 bind.card.id,
                 ConstraintSet.START,
@@ -163,10 +164,10 @@ class introPage : Fragment() {
     }
 
     private fun setNavigation() {
-            bind.begin.visibility = View.VISIBLE
-            bind.begin.setOnClickListener {
-                findNavController().navigate(R.id.action_introPage_to_registerFragment)
-            }
+        bind.begin.visibility = View.VISIBLE
+        bind.begin.setOnClickListener {
+            findNavController().navigate(R.id.action_introPage_to_registerFragment)
+        }
     }
 
     override fun onResume() {

@@ -6,7 +6,10 @@ import android.os.Bundle
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.example.pocketpal.R
@@ -20,6 +23,11 @@ class SplashActivty : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         bind = DataBindingUtil.setContentView(this,R.layout.activity_splash_activty)
+        ViewCompat.setOnApplyWindowInsetsListener(bind.splashMain){v,inset->
+            val navBars = inset.getInsets(WindowInsetsCompat.Type.navigationBars()).bottom
+            v.updatePadding(bottom = navBars)
+            inset
+        }
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         val backPressHandling = object:OnBackPressedCallback(true){
             val navController = findNavController(R.id.splashHost)
