@@ -13,4 +13,6 @@
     <string name="logo">logo</string>
     <string name="fullName">Full Name</string>
     <string name="begin">begin</string>
+    <string name="splash_screen">Splash Screen</string>
+    <string name="main_activity">Main Activity</string>
 </resources>

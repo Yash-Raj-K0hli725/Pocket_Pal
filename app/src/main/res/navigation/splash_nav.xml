@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/introPage">
+    app:startDestination="@id/splashFragment">
     <fragment
         android:id="@+id/introPage"
         android:name="com.example.pocketpal.SplashActivity.splashFrag.introPage"
@@ -17,4 +17,12 @@
         android:id="@+id/registerFragment"
         android:name="com.example.pocketpal.SplashActivity.splashFrag.RegisterFragment"
         android:label="RegisterFragment" />
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.example.pocketpal.SplashActivity.splashFrag.introVPFrags.SplashFragment"
+        android:label="SplashFragment" >
+        <action
+            android:id="@+id/action_splashFragment_to_introPage"
+            app:destination="@id/introPage" />
+    </fragment>
 </navigation>

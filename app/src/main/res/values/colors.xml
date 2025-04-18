@@ -3,5 +3,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="soothingBlack">#252525</color>
+    <color name="darkGreen">#11212d</color>
+    <color name="lightGreen">#253745</color>
+    <color name="gay">#9ba8ab</color>
+    <color name="peach">#ccd0cf</color>
     <color name="blue">#42C4FF</color>
 </resources>
