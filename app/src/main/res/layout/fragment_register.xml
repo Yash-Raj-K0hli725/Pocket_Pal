@@ -8,8 +8,7 @@
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/gay"
-        tools:context=".MainActivty.MainActivity">
+        tools:context=".MainActivity">
 
         <ImageView
             android:id="@+id/imageView"
@@ -40,13 +39,12 @@
             android:id="@+id/cv_registerCard"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_margin="10dp"
-            app:cardBackgroundColor="@color/peach"
             app:cardCornerRadius="@dimen/_32sdp"
+            android:layout_margin="10dp"
             app:cardElevation="0dp"
-            app:layout_constraintBottom_toTopOf="@id/bottom"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/bottom"
             app:layout_constraintTop_toBottomOf="@id/top">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -60,7 +58,6 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/alata"
                     android:text="@string/register"
-                    android:textColor="@color/darkGreen"
                     android:textSize="42sp"
                     android:textStyle="bold"
 
@@ -72,33 +69,29 @@
                     app:layout_constraintVertical_bias="0.06" />
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/txtLay_FullName"
+                    android:id="@+id/tfFullName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/fullName"
-                    android:textColorHint="@color/darkGreen"
                     app:boxCornerRadiusBottomEnd="8dp"
                     app:boxCornerRadiusBottomStart="8dp"
                     app:boxCornerRadiusTopEnd="8dp"
                     app:boxCornerRadiusTopStart="8dp"
-                    app:boxStrokeColor="@color/text_field_color"
-                    app:hintTextColor="@color/darkGreen"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tvRegister"
-                    app:layout_constraintVertical_bias="0.2">
+                    app:layout_constraintVertical_bias="0.2"
+                    >
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/tf_full_name"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColorHint="@color/darkGreen" />
+                        android:layout_height="wrap_content" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/txtLay_email"
+                    android:id="@+id/tfEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/email"
@@ -106,23 +99,20 @@
                     app:boxCornerRadiusBottomStart="8dp"
                     app:boxCornerRadiusTopEnd="8dp"
                     app:boxCornerRadiusTopStart="8dp"
-                    app:boxStrokeColor="@color/text_field_color"
-                    app:hintTextColor="@color/darkGreen"
-                    app:layout_constraintBottom_toTopOf="@id/txtLay_Password"
+                    app:layout_constraintTop_toBottomOf="@id/tfFullName"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/txtLay_FullName">
+                    app:layout_constraintBottom_toTopOf="@id/tfPassword"
+                    >
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/tfEmail"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/darkGreen" />
+                        android:layout_height="wrap_content" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/txtLay_Password"
+                    android:id="@+id/tfPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/password"
@@ -130,20 +120,16 @@
                     app:boxCornerRadiusBottomStart="8dp"
                     app:boxCornerRadiusTopEnd="8dp"
                     app:boxCornerRadiusTopStart="8dp"
-                    app:boxStrokeColor="@color/text_field_color"
                     app:endIconMode="password_toggle"
-                    app:hintTextColor="@color/darkGreen"
                     app:layout_constraintBottom_toTopOf="@+id/cbPrivacy"
+                    app:layout_constraintTop_toBottomOf="@id/tfEmail"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/txtLay_email">
+                    app:layout_constraintStart_toStartOf="parent">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/tf_Password"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="textPassword"
-                        android:textColor="@color/darkGreen" />
+                        android:inputType="textPassword" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -153,11 +139,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
                     android:text="@string/terms_and_privacy"
-                    android:textColor="@color/darkGreen"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/txtLay_Password" />
+                    app:layout_constraintTop_toBottomOf="@id/tfPassword"
+                    />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 
@@ -165,26 +151,25 @@
             android:id="@+id/btnRegister"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/soothingBlack"
             android:layout_marginStart="@dimen/_64sdp"
             android:layout_marginEnd="@dimen/_64sdp"
-            android:backgroundTint="@color/darkGreen"
-            android:elevation="4dp"
-            android:fontFamily="@font/alata"
-            android:padding="@dimen/_8sdp"
-            android:text="@string/register"
-            android:textSize="16sp"
             android:translationZ="2dp"
+            android:fontFamily="@font/alata"
+            android:text="@string/register"
+            android:elevation="4dp"
             app:layout_constraintBottom_toBottomOf="@id/cv_registerCard"
+            app:layout_constraintTop_toBottomOf="@id/cv_registerCard"
             app:layout_constraintEnd_toEndOf="@id/cv_registerCard"
             app:layout_constraintStart_toStartOf="@id/cv_registerCard"
-            app:layout_constraintTop_toBottomOf="@id/cv_registerCard" />
+             />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/top"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.2" />
+           app:layout_constraintGuide_percent="0.2" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/bottom"
