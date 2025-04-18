@@ -28,7 +28,7 @@
         </activity>
 
         <activity
-            android:name=".MainActivity"
+            android:name=".MainActivty.MainActivity"
             android:exported="false"/>
 
     </application>

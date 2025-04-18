@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/gay"
-        tools:context=".MainActivity">
+        tools:context=".MainActivty.MainActivity">
 
         <ImageView
             android:id="@+id/imageView"

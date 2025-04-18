@@ -7,8 +7,6 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.example.pocketpal.R
-import com.example.pocketpal.SplashActivity.splashFrag.introVPFrags.PageOne
-import com.example.pocketpal.SplashActivity.splashFrag.introVPFrags.PageTwo
 import com.example.pocketpal.SplashActivity.splashFrag.introVPFrags.introViewPagerAdapter
 import com.example.pocketpal.databinding.FragmentIntroPageBinding
 import com.google.android.material.tabs.TabLayout
@@ -22,7 +20,7 @@ class introPage : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         bind = DataBindingUtil.inflate(inflater, R.layout.fragment_intro_page, container, false)
-        bind.vpIntro.adapter = introViewPagerAdapter(this, listOf(PageOne(), PageTwo()))
+        bind.vpIntro.adapter = introViewPagerAdapter()
         TabLayoutMediator(bind.tabLay, bind.vpIntro) { _, _ ->
         }.attach()
 

@@ -8,12 +8,9 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.pocketpal.MainActivity
+import com.example.pocketpal.MainActivty.MainActivity
 import com.example.pocketpal.R
 import com.example.pocketpal.SplashActivity.RegisterViewModel
-import com.example.pocketpal.SplashActivity.RegisterViewModelFactory
-import com.example.pocketpal.SplashActivity.data.dataStore.DataStoreManager
-import com.example.pocketpal.SplashActivity.data.repository.UserRepository
 import com.example.pocketpal.databinding.FragmentRegisterBinding
 
 class RegisterFragment : Fragment() {
