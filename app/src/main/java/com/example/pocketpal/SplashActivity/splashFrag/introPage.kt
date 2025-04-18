@@ -26,7 +26,7 @@ class introPage : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         bind = DataBindingUtil.inflate(inflater, R.layout.fragment_intro_page, container, false)
-        bind.vpIntro.adapter = introViewPagerAdapter(listOf(0, 1))
+        bind.vpIntro.adapter = introViewPagerAdapter()
         TabLayoutMediator(bind.tabLay, bind.vpIntro) { _, _ ->
         }.attach()
         bind.tabLay.addOnTabSelectedListener(object : OnTabSelectedListener {

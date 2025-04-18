@@ -6,11 +6,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pocketpal.R
 
-class introViewPagerAdapter(val items: List<Int>) :
+class introViewPagerAdapter :
     RecyclerView.Adapter<introViewPagerAdapter.ViewPagerViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewPagerViewHolder {
         return ViewPagerViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.intro_vpager, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.blank, parent, false)
         )
     }
 
@@ -19,7 +19,7 @@ class introViewPagerAdapter(val items: List<Int>) :
     }
 
     override fun getItemCount(): Int {
-        return items.size
+        return 2
     }
 
     inner class ViewPagerViewHolder(item: View) : RecyclerView.ViewHolder(item)
