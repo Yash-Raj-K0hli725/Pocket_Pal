@@ -24,6 +24,10 @@ class SplashActivty : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         bind = DataBindingUtil.setContentView(this, R.layout.activity_splash_activty)
+        val dataStore = DataStoreManager(this)
+        val repo = UserRepository(dataStore)
+        rvm = ViewModelProvider(this, RegisterViewModelFactory(repo))[RegisterViewModel::class.java]
+
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         val backPressHandling = object : OnBackPressedCallback(true) {
             val navController = findNavController(R.id.splashHost)
@@ -34,9 +38,5 @@ class SplashActivty : AppCompatActivity() {
             }
         }
         onBackPressedDispatcher.addCallback(this, backPressHandling)
-
-        val dataStoreManager = DataStoreManager(applicationContext)
-        val userRepository = UserRepository(dataStoreManager)
-        rvm = ViewModelProvider(this, RegisterViewModelFactory(userRepository))[RegisterViewModel::class.java]
     }
 }

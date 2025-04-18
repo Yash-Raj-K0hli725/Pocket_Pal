@@ -24,20 +24,17 @@ class RegisterFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         bind = DataBindingUtil.inflate(inflater, R.layout.fragment_register, container, false)
-
-        val dataStore = DataStoreManager(requireContext())
-        val repo = UserRepository(dataStore)
-        rvm = ViewModelProvider(this, RegisterViewModelFactory(repo))[RegisterViewModel::class.java]
+        rvm = ViewModelProvider(requireActivity())[RegisterViewModel::class.java]
         val intent = Intent(requireActivity(), MainActivity::class.java)
 
-        val tfFullName = bind.fullName
-        val tfEmail = bind.email
-        val tfPassword = bind.password
+        val tfFullName = bind.tfFullName
+        val tfEmail = bind.tfEmail
+        val tfPassword = bind.tfPassword
         val btnRegister = bind.btnRegister
         val cbPrivacy = bind.cbPrivacy
 
         btnRegister.setOnClickListener {
-            if (cbPrivacy.isChecked) {
+            if (cbPrivacy.isChecked && checkInputs()) {
                 val fullName = tfFullName.text.toString()
                 val email = tfEmail.text.toString()
                 val password = tfPassword.text.toString()
@@ -47,5 +44,9 @@ class RegisterFragment : Fragment() {
             }
         }
         return bind.root
+    }
+
+    private fun checkInputs(): Boolean {
+        return bind.tfEmail.text!!.isNotEmpty() && bind.tfPassword.text!!.isNotEmpty() && bind.tfFullName.text!!.isNotEmpty()
     }
 }
