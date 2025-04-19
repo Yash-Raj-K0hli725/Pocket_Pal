@@ -6,6 +6,9 @@ import android.os.Bundle
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -24,6 +27,11 @@ class SplashActivty : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         bind = DataBindingUtil.setContentView(this, R.layout.activity_splash_activty)
+        ViewCompat.setOnApplyWindowInsetsListener(bind.splashMain){v,inset->
+            val navBar = inset.getInsets(WindowInsetsCompat.Type.navigationBars())
+            v.updatePadding(bottom = navBar.bottom)
+            inset
+        }
         val dataStore = DataStoreManager(this)
         val repo = UserRepository(dataStore)
         rvm = ViewModelProvider(this, RegisterViewModelFactory(repo))[RegisterViewModel::class.java]

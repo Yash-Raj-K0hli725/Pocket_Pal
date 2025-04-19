@@ -35,18 +35,19 @@ class SplashFragment : Fragment() {
         val dataStoreManager = DataStoreManager(requireActivity())
         val userRepository = UserRepository(dataStoreManager)
         registerViewModel =
-            ViewModelProvider(requireActivity(), RegisterViewModelFactory(userRepository))[RegisterViewModel::class
+            ViewModelProvider(
+                requireActivity(),
+                RegisterViewModelFactory(userRepository)
+            )[RegisterViewModel::class
                 .java]
 
-        val intent = Intent(requireActivity(), MainActivity::class.java)
 
         lifecycleScope.launch(Dispatchers.IO) {
             delay(1000)
             val userName = userRepository.getUserData().fullName
             if (userName != "") {
                 withContext(Dispatchers.Main) {
-                    startActivity(intent)
-                    requireActivity().finish()
+                    launchMainActivity()
                 }
             } else {
                 withContext(Dispatchers.Main) {
@@ -56,5 +57,15 @@ class SplashFragment : Fragment() {
         }
 
         return bind.root
+    }
+
+    private fun launchMainActivity() {
+        val intent = Intent(requireActivity(), MainActivity::class.java)
+        startActivity(intent)
+        requireActivity().apply {
+            overridePendingTransition(R.anim.nav_fade_in, R.anim.nav_fade_out)
+            finish()
+        }
+
     }
 }

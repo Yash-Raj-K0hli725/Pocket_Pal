@@ -15,7 +15,9 @@
     <string name="begin">begin</string>
     <string name="splash_screen">Splash Screen</string>
     <string name="main_activity">Main Activity</string>
-    <string name="initialText1">Main Activity</string>
-    <string name="initialText2">Main Activity</string>
-    <string name="initialText3">Main Activity</string>
+    <string name="initialText1">Simplify the way you manage your expenses.</string>
+    <string name="initialText2">Get a clear overview and start making smarter financial decisions today</string>
+    <string name="initialText3">Ever wonder where your hard-earned money disappears? Uncover your spending patterns and gain valuable insights</string>
+    <string name="profile">Profile</string>
+    <string name="tempInitials">Hi,Yash</string>
 </resources>

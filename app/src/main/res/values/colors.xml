@@ -8,4 +8,7 @@
     <color name="gay">#9ba8ab</color>
     <color name="peach">#ccd0cf</color>
     <color name="blue">#42C4FF</color>
+    <color name="primary">#47E1E1</color>
+    <color name="secondary">#0232DA</color>
+    <color name="tertiary">#04082E</color>
 </resources>
