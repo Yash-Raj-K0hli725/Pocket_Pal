@@ -6,9 +6,18 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.example.pocketpal.R
+import com.example.pocketpal.database.Expense
+import com.example.pocketpal.database.ExpenseDatabase
+import com.example.pocketpal.database.ExpenseRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var mainViewModel: MainViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -18,5 +27,19 @@ class MainActivity : AppCompatActivity() {
             v.updatePadding(bottom = navBars.bottom)
             insets
         }
+
+        val expenseDatabase = ExpenseDatabase.getDatabase(this)
+        val expenseRepository = ExpenseRepository(expenseDatabase)
+        mainViewModel = ViewModelProvider(this, MainViewModelFactory(expenseRepository))[MainViewModel::class.java]
+
+        lifecycleScope.launch(Dispatchers.IO) {
+            expenseDatabase
+                .databaseDao()
+                .insertExpense(
+                    Expense(300, "pleasure", 1744848000000, "cash", "sasti rand ki pilai", 1)
+                )
+        }
+
+//        deleteDatabase("expenseDB")
     }
 }

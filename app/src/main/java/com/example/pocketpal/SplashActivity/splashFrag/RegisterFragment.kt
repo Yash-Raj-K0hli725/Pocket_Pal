@@ -14,6 +14,7 @@ import com.example.pocketpal.SplashActivity.RegisterViewModel
 import com.example.pocketpal.databinding.FragmentRegisterBinding
 
 class RegisterFragment : Fragment() {
+    // it will show one time
     private lateinit var bind: FragmentRegisterBinding
     private lateinit var rvm: RegisterViewModel
 

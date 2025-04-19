@@ -59,7 +59,6 @@ class introPage : Fragment() {
             }
         })
 
-        // Inflate the layout for this fragment
         return bind.root
     }
 

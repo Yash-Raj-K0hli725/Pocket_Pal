@@ -15,4 +15,7 @@
     <string name="begin">begin</string>
     <string name="splash_screen">Splash Screen</string>
     <string name="main_activity">Main Activity</string>
+    <string name="initialText1">Main Activity</string>
+    <string name="initialText2">Main Activity</string>
+    <string name="initialText3">Main Activity</string>
 </resources>
