@@ -20,4 +20,6 @@
     <string name="initialText3">Ever wonder where your hard-earned money disappears? Uncover your spending patterns and gain valuable insights</string>
     <string name="profile">Profile</string>
     <string name="tempInitials">Hi,Yash</string>
+    <string name="total_spent">Total Spent</string>
+    <string name="recent_transactions">Recent Transactions</string>
 </resources>
