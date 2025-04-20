@@ -21,10 +21,13 @@
             app:layout_constraintVertical_bias="0.3">
 
             <ImageButton
+                android:id="@+id/addImage"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/gay"
+                android:background="@mipmap/add_image"
                 android:contentDescription="@string/add_profile_icon"
+                android:scaleX="1.2"
+                android:scaleY="1.2"
                 android:src="@drawable/ic_add_profile_btn" />
 
         </androidx.cardview.widget.CardView>
@@ -33,9 +36,9 @@
             android:id="@+id/tvBudget"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/alata"
             android:text="@string/set_budget"
             android:textSize="20sp"
-            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -43,13 +46,17 @@
             app:layout_constraintTop_toBottomOf="@+id/cardView"
             app:layout_constraintVertical_bias="0.1" />
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/materialCardView2"
-            android:layout_width="match_parent"
-            android:layout_height="64dp"
-            android:layout_margin="@dimen/_16sdp"
-            app:cardBackgroundColor="@color/peach"
-            app:cardCornerRadius="16dp"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txtLay_Budget"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/white"
+            app:boxBackgroundColor="@color/soothingBlack"
+            app:boxBackgroundMode="outline"
+            app:boxCornerRadiusBottomEnd="20dp"
+            app:boxCornerRadiusBottomStart="20dp"
+            app:boxCornerRadiusTopEnd="20dp"
+            app:boxCornerRadiusTopStart="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -57,64 +64,58 @@
             app:layout_constraintTop_toBottomOf="@+id/tvBudget"
             app:layout_constraintVertical_bias="0">
 
-            <EditText
-                android:id="@+id/etBudget"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_Budget"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:background="@android:color/transparent"
                 android:gravity="center"
+                android:fontFamily="@font/alata"
                 android:hint="@string/budget_field"
-                android:inputType="number"
-                android:textColor="@color/soothingBlack"
-                android:textColorHint="@color/soothingBlack"
-                android:textSize="@dimen/_20sdp" />
-
-        </com.google.android.material.card.MaterialCardView>
+                />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
-            android:id="@+id/tvIncome"
+            android:id="@+id/tv_Income"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/alata"
             android:text="@string/income"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/materialCardView2"
+            app:layout_constraintTop_toBottomOf="@id/txtLay_Budget"
             app:layout_constraintVertical_bias="0.1" />
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/materialCardView3"
-            android:layout_width="match_parent"
-            android:layout_height="64dp"
-            android:layout_margin="@dimen/_16sdp"
-            app:cardBackgroundColor="@color/peach"
-            app:cardCornerRadius="16dp"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txtLay_Income"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/white"
+            app:boxBackgroundColor="@color/soothingBlack"
+            app:boxBackgroundMode="outline"
+            app:boxCornerRadiusBottomEnd="20dp"
+            app:boxCornerRadiusBottomStart="20dp"
+            app:boxCornerRadiusTopEnd="20dp"
+            app:boxCornerRadiusTopStart="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvIncome"
+            app:layout_constraintTop_toBottomOf="@id/tv_Income"
             app:layout_constraintVertical_bias="0">
 
-            <EditText
-                android:id="@+id/etIncome"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_Income"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:background="@android:color/transparent"
                 android:gravity="center"
+                android:fontFamily="@font/alata"
                 android:hint="@string/budget_field"
-                android:inputType="number"
-                android:textColor="@color/soothingBlack"
-                android:textColorHint="@color/soothingBlack"
-                android:textSize="@dimen/_20sdp" />
 
-        </com.google.android.material.card.MaterialCardView>
+                />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/btnSave"
@@ -122,14 +123,15 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_16sdp"
             android:backgroundTint="@color/soothingBlack"
+            android:fontFamily="@font/alata"
+            android:padding="8dp"
             android:text="@string/save"
             android:textSize="20sp"
-            android:padding="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/materialCardView3"
+            app:layout_constraintTop_toBottomOf="@+id/txtLay_Income"
             app:layout_constraintVertical_bias="0.9" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
