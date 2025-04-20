@@ -10,6 +10,9 @@ import androidx.room.Upsert
 @Dao
 interface DatabaseDao {
     @Upsert
+    suspend fun insertUserDetails(userDetails: UserDetails)
+
+    @Upsert
     suspend fun insertExpense(expense: Expense)
 
     @Update
@@ -17,6 +20,9 @@ interface DatabaseDao {
 
     @Delete
     suspend fun deleteExpense(expense: Expense)
+
+    @Query("SELECT * FROM userDetails LIMIT 1")
+    fun getUserDetails(): LiveData<UserDetails>
 
     @Query("SELECT * FROM expense")
     fun getExpenseDetails(): LiveData<List<Expense>>

@@ -1,6 +1,7 @@
 package com.example.pocketpal.SplashActivity
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.pm.ActivityInfo
 import android.os.Bundle
 import androidx.activity.OnBackPressedCallback
@@ -13,8 +14,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.pocketpal.R
-import com.example.pocketpal.SplashActivity.data.dataStore.DataStoreManager
 import com.example.pocketpal.SplashActivity.data.repository.UserRepository
+import com.example.pocketpal.database.ExpenseDatabase
 import com.example.pocketpal.databinding.ActivitySplashActivtyBinding
 
 
@@ -32,8 +33,9 @@ class SplashActivty : AppCompatActivity() {
             v.updatePadding(bottom = navBar.bottom)
             inset
         }
-        val dataStore = DataStoreManager(this)
-        val repo = UserRepository(dataStore)
+        val expenseDatabase = ExpenseDatabase.getDatabase(applicationContext)
+        val databaseDao = expenseDatabase.databaseDao()
+        val repo = UserRepository(databaseDao)
         rvm = ViewModelProvider(this, RegisterViewModelFactory(repo))[RegisterViewModel::class.java]
 
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT

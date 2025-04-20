@@ -1,12 +1,15 @@
 package com.example.pocketpal.SplashActivity.data.repository
 
-import com.example.pocketpal.SplashActivity.data.dataStore.DataStoreManager
-import com.example.pocketpal.SplashActivity.data.model.UserData
+import androidx.lifecycle.LiveData
+import com.example.pocketpal.database.DatabaseDao
+import com.example.pocketpal.database.UserDetails
 
-class UserRepository(private val dataStoreManager: DataStoreManager) {
-    suspend fun getUserData(): UserData = dataStoreManager.getUserData()
+class UserRepository(private val databaseDao: DatabaseDao) {
+    suspend fun saveUserData(fullName: String, email: String, password: String, monthlyBudget: Long, income: Long) {
+        databaseDao.insertUserDetails(UserDetails(fullName, email, password, monthlyBudget, income, 1))
+    }
 
-    suspend fun saveUserData(fullName: String, email: String, password: String) {
-        dataStoreManager.saveUserData(fullName, email, password)
+    fun getUserDetails() : LiveData<UserDetails>{
+        return databaseDao.getUserDetails()
     }
 }

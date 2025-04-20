@@ -16,7 +16,6 @@ class Home : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         bind = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
-        // Inflate the layout for this fragment
         return bind.root
     }
 }

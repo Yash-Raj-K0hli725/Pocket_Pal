@@ -12,6 +12,7 @@ import com.example.pocketpal.R
 import com.example.pocketpal.database.Expense
 import com.example.pocketpal.database.ExpenseDatabase
 import com.example.pocketpal.database.ExpenseRepository
+import com.example.pocketpal.database.UserDetails
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -28,7 +29,7 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        val expenseDatabase = ExpenseDatabase.getDatabase(this)
+        val expenseDatabase = ExpenseDatabase.getDatabase(applicationContext)
         val expenseRepository = ExpenseRepository(expenseDatabase)
         mainViewModel = ViewModelProvider(this, MainViewModelFactory(expenseRepository))[MainViewModel::class.java]
 

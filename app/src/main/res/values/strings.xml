@@ -20,4 +20,9 @@
     <string name="initialText3">Ever wonder where your hard-earned money disappears? Uncover your spending patterns and gain valuable insights</string>
     <string name="profile">Profile</string>
     <string name="tempInitials">Hi,Yash</string>
+    <string name="set_budget">Set Monthly Budget</string>
+    <string name="income">Income</string>
+    <string name="add_profile_icon">Add profile icon</string>
+    <string name="budget_field">₹ 0.0000</string>
+    <string name="save">Save</string>
 </resources>

@@ -165,7 +165,7 @@ class introPage : Fragment() {
     private fun setNavigation() {
         bind.begin.visibility = View.VISIBLE
         bind.begin.setOnClickListener {
-            findNavController().navigate(R.id.action_introPage_to_registerFragment)
+            findNavController().navigate(R.id.action_introPage_to_budgetInfo)
         }
     }
 

@@ -8,9 +8,11 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.navArgs
 import com.example.pocketpal.MainActivty.MainActivity
 import com.example.pocketpal.R
 import com.example.pocketpal.SplashActivity.RegisterViewModel
+import com.example.pocketpal.database.UserDetails
 import com.example.pocketpal.databinding.FragmentRegisterBinding
 
 class RegisterFragment : Fragment() {
@@ -31,16 +33,21 @@ class RegisterFragment : Fragment() {
         val btnRegister = bind.btnRegister
         val cbPrivacy = bind.cbPrivacy
 
+        val args: RegisterFragmentArgs by navArgs()
+        val budget = args.budget.monthlyBudget
+        val income = args.budget.income
+
         btnRegister.setOnClickListener {
             if (cbPrivacy.isChecked && checkInputs()) {
                 val fullName = tfFullName.text.toString()
                 val email = tfEmail.text.toString()
                 val password = tfPassword.text.toString()
-                rvm.saveUserData(fullName, email, password)
+                rvm.saveUserData(fullName, email, password, budget, income)
                 startActivity(intent)
                 requireActivity().finish()
             }
         }
+
         return bind.root
     }
 
