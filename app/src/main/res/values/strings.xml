@@ -25,4 +25,6 @@
     <string name="add_profile_icon">Add profile icon</string>
     <string name="budget_field">₹ 0.0000</string>
     <string name="save">Save</string>
+    <string name="total_spent">Total Spent</string>
+    <string name="recent_transactions">Recent Transactions</string>
 </resources>
