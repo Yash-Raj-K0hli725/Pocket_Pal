@@ -27,8 +27,7 @@
                 android:background="@mipmap/add_image"
                 android:contentDescription="@string/add_profile_icon"
                 android:scaleX="1.2"
-                android:scaleY="1.2"
-                android:src="@drawable/ic_add_profile_btn" />
+                android:scaleY="1.2" />
 
         </androidx.cardview.widget.CardView>
 
@@ -56,6 +55,7 @@
             app:boxCornerRadiusBottomEnd="20dp"
             app:boxCornerRadiusBottomStart="20dp"
             app:boxCornerRadiusTopEnd="20dp"
+            app:hintEnabled="false"
             app:boxCornerRadiusTopStart="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -68,10 +68,11 @@
                 android:id="@+id/et_Budget"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
                 android:fontFamily="@font/alata"
+                android:gravity="center"
+                android:textColorHint="@color/white"
                 android:hint="@string/budget_field"
-                />
+                android:textColor="@color/white" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -98,6 +99,7 @@
             app:boxCornerRadiusBottomEnd="20dp"
             app:boxCornerRadiusBottomStart="20dp"
             app:boxCornerRadiusTopEnd="20dp"
+            app:hintEnabled="false"
             app:boxCornerRadiusTopStart="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -110,9 +112,11 @@
                 android:id="@+id/et_Income"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
                 android:fontFamily="@font/alata"
+                android:gravity="center"
+                android:textColorHint="@color/white"
                 android:hint="@string/budget_field"
+                android:textColor="@color/white"
 
                 />
         </com.google.android.material.textfield.TextInputLayout>

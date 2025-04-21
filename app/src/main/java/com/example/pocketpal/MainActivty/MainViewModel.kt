@@ -1,8 +1,10 @@
 package com.example.pocketpal.MainActivty
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pocketpal.database.ExpenseRepository
+import com.example.pocketpal.database.UserDetails
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -11,5 +13,9 @@ class MainViewModel(private val expenseRepository: ExpenseRepository) : ViewMode
         viewModelScope.launch(Dispatchers.IO) {
             expenseRepository.insertExpense(amount, category, date, paymentMode,  note)
         }
+    }
+
+    fun getUserDetails() : LiveData<UserDetails> {
+        return expenseRepository.getUserDetails()
     }
 }

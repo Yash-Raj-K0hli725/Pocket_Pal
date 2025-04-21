@@ -10,4 +10,6 @@ class ExpenseRepository(private val expenseDatabase: ExpenseDatabase) {
     suspend fun deleteExpense(expense: Expense) = expenseDatabase.databaseDao().deleteExpense(expense)
 
     fun getExpenseDetails() = expenseDatabase.databaseDao().getExpenseDetails()
+
+    fun getUserDetails() = expenseDatabase.databaseDao().getUserDetails()
 }
