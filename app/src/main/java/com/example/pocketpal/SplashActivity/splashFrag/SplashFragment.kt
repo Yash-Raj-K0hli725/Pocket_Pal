@@ -1,14 +1,14 @@
-package com.example.pocketpal.SplashActivity.splashFrag.introVPFrags
+package com.example.pocketpal.SplashActivity.splashFrag
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -16,12 +16,10 @@ import com.example.pocketpal.MainActivty.MainActivity
 import com.example.pocketpal.R
 import com.example.pocketpal.SplashActivity.RegisterViewModel
 import com.example.pocketpal.SplashActivity.RegisterViewModelFactory
-import com.example.pocketpal.SplashActivity.data.dataStore.DataStoreManager
 import com.example.pocketpal.SplashActivity.data.repository.UserRepository
 import com.example.pocketpal.database.ExpenseDatabase
 import com.example.pocketpal.databinding.FragmentSplashBinding
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -45,17 +43,17 @@ class SplashFragment : Fragment() {
             )[RegisterViewModel::class
                 .java]
 
-        registerViewModel.getUserDetails().observe(viewLifecycleOwner) { user ->
-            lifecycleScope.launch {
-                delay(1000)
-
-                if (user != null && user.fullName.isNotEmpty()) {
-                    launchMainActivity()
-                } else {
+        lifecycleScope.launch(Dispatchers.IO) {
+            if (registerViewModel.checkIfUserExists()) {
+                Handler(Looper.getMainLooper()).postDelayed({ launchMainActivity() }, 1000)
+            } else {
+                withContext(Dispatchers.Main) {
                     findNavController().navigate(R.id.action_splashFragment_to_introPage)
                 }
+
             }
         }
+
 
 
         return bind.root

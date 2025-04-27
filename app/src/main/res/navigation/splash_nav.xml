@@ -23,7 +23,7 @@
     </fragment>
     <fragment
         android:id="@+id/splashFragment"
-        android:name="com.example.pocketpal.SplashActivity.splashFrag.introVPFrags.SplashFragment"
+        android:name="com.example.pocketpal.SplashActivity.splashFrag.SplashFragment"
         android:label="SplashFragment" >
         <action
             android:id="@+id/action_splashFragment_to_introPage"
@@ -41,5 +41,12 @@
         <action
             android:id="@+id/action_budgetInfo_to_registerFragment"
             app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_budgetInfo_to_selectProfileDialog"
+            app:destination="@id/selectProfileDialog" />
     </fragment>
+    <dialog
+        android:id="@+id/selectProfileDialog"
+        android:name="com.example.pocketpal.SplashActivity.splashFrag.SelectProfileDialog"
+        android:label="SelectProfileDialog" />
 </navigation>

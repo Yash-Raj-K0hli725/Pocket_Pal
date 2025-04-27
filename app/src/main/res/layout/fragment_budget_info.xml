@@ -22,7 +22,7 @@
             app:layout_constraintVertical_bias="0.3">
 
             <ImageButton
-                android:id="@+id/addImage"
+                android:id="@+id/selectProfile"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@mipmap/add_image"
@@ -74,7 +74,6 @@
                 android:layout_height="match_parent"
                 android:fontFamily="@font/alata"
                 android:gravity="center"
-                android:hint="@string/budget_field"
                 android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -118,7 +117,6 @@
                 android:layout_height="match_parent"
                 android:fontFamily="@font/alata"
                 android:gravity="center"
-                android:hint="@string/budget_field"
                 android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
 

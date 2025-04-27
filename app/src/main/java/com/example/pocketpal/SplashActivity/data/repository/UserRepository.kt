@@ -12,4 +12,8 @@ class UserRepository(private val databaseDao: DatabaseDao) {
     fun getUserDetails() : LiveData<UserDetails>{
         return databaseDao.getUserDetails()
     }
+
+    suspend fun checkIfUserExists():Int{
+        return databaseDao.checkIfUserExists()
+    }
 }
