@@ -10,6 +10,7 @@ data class UserDetails(
     val password: String,
     val monthlyBudget: Long,
     val income: Long,
+    val imageName:String,
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0
 )

@@ -8,13 +8,19 @@ import com.example.pocketpal.database.UserDetails
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class RegisterViewModel(private val userRepository: UserRepository) : ViewModel() {
 
-    fun saveUserData(fullName: String, email: String, password: String, monthlyBudget: Long, income: Long) {
+    fun saveUserData(
+        fullName: String,
+        email: String,
+        password: String,
+        monthlyBudget: Long,
+        imageName: String,
+        income: Long
+    ) {
         viewModelScope.launch(Dispatchers.IO) {
-            userRepository.saveUserData(fullName, email, password, monthlyBudget, income)
+            userRepository.saveUserData(fullName, email, password, monthlyBudget, imageName, income)
         }
     }
 
@@ -22,9 +28,9 @@ class RegisterViewModel(private val userRepository: UserRepository) : ViewModel(
         return userRepository.getUserDetails()
     }
 
-    suspend fun checkIfUserExists():Boolean{
+    suspend fun checkIfUserExists(): Boolean {
         return viewModelScope.async {
-            userRepository.checkIfUserExists()>0
+            userRepository.checkIfUserExists() > 0
         }.await()
     }
 }

@@ -27,7 +27,7 @@
             app:tint="@color/white" />
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/userProfile"
+            android:id="@+id/cv_userProfile"
             android:layout_width="@dimen/_50sdp"
             android:layout_height="@dimen/_50sdp"
             app:cardCornerRadius="300dp"
@@ -37,12 +37,12 @@
             app:layout_constraintTop_toTopOf="@id/sideBar">
 
             <ImageView
+                android:id="@+id/userProfile"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:contentDescription="@string/profile"
-                android:scaleX="1.5"
-                android:scaleY="1.5"
-                app:srcCompat="@mipmap/sample_profile" />
+                android:scaleType="centerCrop"
+                />
 
         </androidx.cardview.widget.CardView>
 

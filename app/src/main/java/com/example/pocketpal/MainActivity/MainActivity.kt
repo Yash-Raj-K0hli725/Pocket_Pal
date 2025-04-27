@@ -3,6 +3,7 @@ package com.example.pocketpal.MainActivity
 import android.annotation.SuppressLint
 import android.content.pm.ActivityInfo
 import android.os.Bundle
+import android.view.View
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -40,16 +41,21 @@ class MainActivity : AppCompatActivity() {
             this,
             MainViewModelFactory(expenseRepository)
         )[MainViewModel::class.java]
+
         val navController = findNavController(R.id.mainHost)
         bind.bottomNavigationView.setupWithNavController(navController)
-
         val onBackPressCallback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 if (!navController.popBackStack())
                     finish()
             }
         }
-        onBackPressedDispatcher.addCallback(this,onBackPressCallback)
+        onBackPressedDispatcher.addCallback(this, onBackPressCallback)
 
+        bind.addItem.setOnClickListener {
+            it.visibility = View.GONE
+            navController.navigate(R.id.action_miHome_to_add)
+        }
     }
+
 }

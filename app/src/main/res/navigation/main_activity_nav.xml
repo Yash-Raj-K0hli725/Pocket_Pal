@@ -6,5 +6,21 @@
     <fragment
         android:id="@+id/miHome"
         android:name="com.example.pocketpal.MainActivity.Fragments.Home"
-        android:label="Home" />
+        android:label="Home" >
+        <action
+            android:id="@+id/action_miHome_to_add"
+            app:destination="@id/add" />
+    </fragment>
+    <fragment
+        android:id="@+id/add"
+        android:name="com.example.pocketpal.MainActivity.Fragments.Add"
+        android:label="Add" >
+        <action
+            android:id="@+id/action_add_to_expenseDetails"
+            app:destination="@id/expenseDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/expenseDetails"
+        android:name="com.example.pocketpal.MainActivity.Fragments.ExpenseDetails"
+        android:label="ExpenseDetails" />
 </navigation>

@@ -35,13 +35,14 @@ class RegisterFragment : Fragment() {
         val args: RegisterFragmentArgs by navArgs()
         val budget = args.budget.monthlyBudget
         val income = args.budget.income
+        val imageName = args.budget.imageName
 
         btnRegister.setOnClickListener {
             if (cbPrivacy.isChecked && checkInputs()) {
                 val fullName = tfFullName.text.toString()
                 val email = tfEmail.text.toString()
                 val password = tfPassword.text.toString()
-                rvm.saveUserData(fullName, email, password, budget, income)
+                rvm.saveUserData(fullName, email, password, budget, imageName, income)
                 startActivity(intent)
                 requireActivity().finish()
             }

@@ -11,7 +11,6 @@ import androidx.navigation.findNavController
 import com.example.pocketpal.R
 import com.example.pocketpal.databinding.FragmentSelectProfileDialogBinding
 
-
 class SelectProfileDialog : DialogFragment() {
     lateinit var bind: FragmentSelectProfileDialogBinding
     override fun onCreateView(
