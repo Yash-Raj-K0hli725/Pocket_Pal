@@ -9,22 +9,77 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity.MainActivity">
 
-        <FrameLayout
-            android:id="@+id/flFragment"
+        <fragment
+            android:id="@+id/mainHost"
+            android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="match_parent"
+            app:navGraph="@navigation/main_activity_nav" />
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomNavigationView"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/nu_cvBottomNavigation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:cardBackgroundColor="@android:color/transparent"
+            app:cardCornerRadius="40dp"
+            app:cardElevation="0dp"
+            app:cardUseCompatPadding="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:menu="@menu/bottom_nav_menu" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1">
+
+            <androidx.coordinatorlayout.widget.CoordinatorLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.bottomappbar.BottomAppBar
+                    android:id="@+id/nu_bottomAppbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:backgroundTint="#f6ebff"
+                    app:fabAlignmentMode="center"
+                    app:fabAnchorMode="cradle"
+                    app:fabCradleMargin="@dimen/_20sdp"
+                    app:fabCradleRoundedCornerRadius="40dp" />
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:alpha="0"
+                    app:layout_anchor="@id/nu_bottomAppbar"
+                    app:shapeAppearance="@style/ThemeOverlay.Material3.FloatingActionButton.Primary" />
+            </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottomNavigationView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                app:elevation="0dp"
+                app:itemActiveIndicatorStyle="@null"
+                app:itemIconTint="@color/bottom_nav_icons"
+                app:itemRippleColor="@null"
+                app:labelVisibilityMode="selected"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:menu="@menu/bottom_nav_menu" />
+        </androidx.cardview.widget.CardView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/addItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_add"
+            app:backgroundTint="@color/white"
+            app:layout_constraintBottom_toTopOf="@id/nu_cvBottomNavigation"
+            app:layout_constraintEnd_toEndOf="@id/nu_cvBottomNavigation"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@id/nu_cvBottomNavigation"
+            app:layout_constraintTop_toTopOf="@id/nu_cvBottomNavigation"
+            app:shapeAppearance="@style/ThemeOverlay.Material3.FloatingActionButton.Primary" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
