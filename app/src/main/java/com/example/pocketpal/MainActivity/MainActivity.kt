@@ -1,5 +1,7 @@
-package com.example.pocketpal.MainActivty
+package com.example.pocketpal.MainActivity
 
+import android.annotation.SuppressLint
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -10,8 +12,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import com.example.pocketpal.MainActivty.Fragments.Add
-import com.example.pocketpal.MainActivty.Fragments.Home
+import com.example.pocketpal.MainActivity.Fragments.Add
+import com.example.pocketpal.MainActivity.Fragments.ExpenseDetails
+import com.example.pocketpal.MainActivity.Fragments.Home
 import com.example.pocketpal.R
 import com.example.pocketpal.database.Expense
 import com.example.pocketpal.database.ExpenseDatabase
@@ -24,6 +27,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var bind: ActivityMainBinding
     private lateinit var mainViewModel: MainViewModel
 
+    @SuppressLint("SourceLockedOrientationActivity")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -33,6 +37,8 @@ class MainActivity : AppCompatActivity() {
             v.updatePadding(bottom = navBars.bottom)
             insets
         }
+
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
         val expenseDatabase = ExpenseDatabase.getDatabase(applicationContext)
         val expenseRepository = ExpenseRepository(expenseDatabase)
@@ -54,6 +60,7 @@ class MainActivity : AppCompatActivity() {
             when (it.itemId) {
                 R.id.miHome -> setCurrentFragment(homeFragment)
                 R.id.miAdd -> setCurrentFragment(addFragment)
+                R.id.miProfile -> setCurrentFragment(ExpenseDetails())
             }
             true
         }

@@ -3,6 +3,5 @@
     <style name="Base.Theme.PocketPal" parent="Theme.Material3.DayNight.NoActionBar">
     </style>
 
-
     <style name="Theme.PocketPal" parent="Base.Theme.PocketPal" />
 </resources>

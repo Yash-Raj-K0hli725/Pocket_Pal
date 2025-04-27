@@ -28,4 +28,15 @@
     <string name="total_spent">Total Spent</string>
     <string name="recent_transactions">Recent Transactions</string>
     <string name="home">Home</string>
+    <string name="add_item_to_expences">ADD ITEM TO EXPENCES</string>
+    <string name="scan_barcode">SCAN BARCODE</string>
+    <string name="add_manually">ADD MANUALLY</string>
+    <string name="cancel">Cancel</string>
+    <string name="rg_space">|</string>
+    <string name="expense">Expense</string>
+    <string name="transfer">Transfer</string>
+    <string name="account">Account</string>
+    <string name="category">Category</string>
+    <string name="add_notes">Add notes</string>
+    <string name="type">Type</string>
 </resources>

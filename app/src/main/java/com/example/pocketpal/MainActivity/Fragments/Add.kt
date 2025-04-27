@@ -1,4 +1,4 @@
-package com.example.pocketpal.MainActivty.Fragments
+package com.example.pocketpal.MainActivity.Fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater

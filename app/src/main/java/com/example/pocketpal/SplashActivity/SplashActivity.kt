@@ -1,7 +1,6 @@
 package com.example.pocketpal.SplashActivity
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.content.pm.ActivityInfo
 import android.os.Bundle
 import androidx.activity.OnBackPressedCallback
@@ -19,7 +18,7 @@ import com.example.pocketpal.database.ExpenseDatabase
 import com.example.pocketpal.databinding.ActivitySplashActivtyBinding
 
 
-class SplashActivty : AppCompatActivity() {
+class SplashActivity : AppCompatActivity() {
     private lateinit var bind: ActivitySplashActivtyBinding
     private lateinit var rvm: RegisterViewModel
 

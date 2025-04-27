@@ -1,4 +1,4 @@
-package com.example.pocketpal.MainActivty
+package com.example.pocketpal.MainActivity
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
