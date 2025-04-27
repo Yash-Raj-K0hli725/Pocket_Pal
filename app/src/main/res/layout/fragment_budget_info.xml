@@ -27,9 +27,8 @@
                 android:layout_height="match_parent"
                 android:background="@mipmap/add_image"
                 android:contentDescription="@string/add_profile_icon"
-                android:scaleX="1.2"
-                android:scaleY="1.2"
-                android:src="@drawable/ic_add_profile_btn" />
+                android:scaleType="centerCrop"
+               />
 
         </androidx.cardview.widget.CardView>
 
