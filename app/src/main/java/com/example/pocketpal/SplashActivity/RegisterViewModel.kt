@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.pocketpal.SplashActivity.data.repository.UserRepository
 import com.example.pocketpal.database.UserDetails
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -19,5 +20,11 @@ class RegisterViewModel(private val userRepository: UserRepository) : ViewModel(
 
     fun getUserDetails(): LiveData<UserDetails> {
         return userRepository.getUserDetails()
+    }
+
+    suspend fun checkIfUserExists():Boolean{
+        return viewModelScope.async {
+            userRepository.checkIfUserExists()>0
+        }.await()
     }
 }

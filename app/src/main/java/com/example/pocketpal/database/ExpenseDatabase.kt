@@ -20,7 +20,7 @@ abstract class ExpenseDatabase : RoomDatabase() {
             if (INSTANCE == null) {
                 synchronized(this) {
                     INSTANCE = Room.databaseBuilder(context.applicationContext, ExpenseDatabase::class.java,
-                        "expenseDB").build()
+                        "ExpenseDB").build()
                 }
             }
             return INSTANCE!!

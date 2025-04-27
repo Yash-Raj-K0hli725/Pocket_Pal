@@ -6,6 +6,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/bck_intro_page"
         tools:context=".SplashActivity.splashFrag.BudgetInfo">
 
         <androidx.cardview.widget.CardView
@@ -21,13 +22,13 @@
             app:layout_constraintVertical_bias="0.3">
 
             <ImageButton
-                android:id="@+id/addImage"
+                android:id="@+id/selectProfile"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@mipmap/add_image"
                 android:contentDescription="@string/add_profile_icon"
-                android:scaleX="1.2"
-                android:scaleY="1.2" />
+                android:scaleType="centerCrop"
+               />
 
         </androidx.cardview.widget.CardView>
 
@@ -37,6 +38,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/alata"
             android:text="@string/set_budget"
+            android:textColor="@color/white"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -49,14 +51,15 @@
             android:id="@+id/txtLay_Budget"
             android:layout_width="@dimen/_200sdp"
             android:layout_height="wrap_content"
-            android:textColorHint="@color/white"
-            app:boxBackgroundColor="@color/soothingBlack"
+            android:textColorHint="@color/soothingBlack"
+            app:boxBackgroundColor="@color/white"
             app:boxBackgroundMode="outline"
             app:boxCornerRadiusBottomEnd="20dp"
             app:boxCornerRadiusBottomStart="20dp"
             app:boxCornerRadiusTopEnd="20dp"
             app:boxCornerRadiusTopStart="20dp"
-            app:hintEnabled="false"
+            app:boxStrokeColor="@color/budget_box"
+            app:hintTextColor="@color/budget_txt_input"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -70,10 +73,7 @@
                 android:layout_height="match_parent"
                 android:fontFamily="@font/alata"
                 android:gravity="center"
-                android:hint="@string/budget_field"
-                android:inputType="number"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white" />
+                android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -82,6 +82,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/alata"
             android:text="@string/income"
+            android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -94,14 +95,14 @@
             android:id="@+id/txtLay_Income"
             android:layout_width="@dimen/_200sdp"
             android:layout_height="wrap_content"
-            android:textColorHint="@color/white"
-            app:boxBackgroundColor="@color/soothingBlack"
+            app:boxBackgroundColor="@color/white"
             app:boxBackgroundMode="outline"
             app:boxCornerRadiusBottomEnd="20dp"
             app:boxCornerRadiusBottomStart="20dp"
             app:boxCornerRadiusTopEnd="20dp"
             app:boxCornerRadiusTopStart="20dp"
-            app:hintEnabled="false"
+            app:boxStrokeColor="@color/budget_box"
+            app:hintTextColor="@color/budget_txt_input"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -115,12 +116,7 @@
                 android:layout_height="match_parent"
                 android:fontFamily="@font/alata"
                 android:gravity="center"
-                android:hint="@string/budget_field"
-                android:inputType="number"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
-
-                />
+                android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
@@ -128,10 +124,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_16sdp"
-            android:backgroundTint="@color/soothingBlack"
+            android:backgroundTint="@color/white"
             android:fontFamily="@font/alata"
             android:padding="8dp"
             android:text="@string/save"
+            android:textColor="@color/soothingBlack"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

@@ -21,6 +21,9 @@ interface DatabaseDao {
     @Delete
     suspend fun deleteExpense(expense: Expense)
 
+    @Query("SELECT COUNT(*) FROM USERDETAILS")
+    suspend fun checkIfUserExists():Int
+
     @Query("SELECT * FROM userDetails LIMIT 1")
     fun getUserDetails(): LiveData<UserDetails>
 

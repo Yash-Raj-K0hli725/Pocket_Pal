@@ -6,5 +6,6 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Budget (
     val monthlyBudget: Long,
-    val income: Long
+    val income: Long,
+    val imageName:String
 ): Parcelable

@@ -8,7 +8,6 @@ data class UserDetails(
     val fullName: String,
     val email: String,
     val password: String,
-//    val imageUri: Int,
     val monthlyBudget: Long,
     val income: Long,
     @PrimaryKey(autoGenerate = true)
