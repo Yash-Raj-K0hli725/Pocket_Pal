@@ -15,6 +15,7 @@ import com.example.pocketpal.R
 import com.example.pocketpal.database.ExpenseDatabase
 import com.example.pocketpal.database.ExpenseRepository
 import com.example.pocketpal.databinding.FragmentHomeBinding
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class Home : Fragment() {
     private lateinit var bind: FragmentHomeBinding
@@ -26,7 +27,7 @@ class Home : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         bind = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
-        requireActivity().findViewById<CardView>(R.id.nu_cvBottomNavigation).visibility = View.VISIBLE
+
         val expenseDatabase = ExpenseDatabase.getDatabase(requireActivity())
         val expenseRepository = ExpenseRepository(expenseDatabase)
         mainViewModel =
@@ -60,7 +61,13 @@ class Home : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //requireActivity().findViewById<FloatingActionButton>(R.id.addItem).visibility = View.VISIBLE
+
+        requireActivity().findViewById<CardView>(R.id.nu_cvBottomNavigation)?.let {
+            it.visibility = View.VISIBLE
+        }
+        requireActivity().findViewById<FloatingActionButton>(R.id.addItem)?.let{
+            it.visibility = View.VISIBLE
+        }
 
     }
 

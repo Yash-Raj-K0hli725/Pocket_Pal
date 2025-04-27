@@ -19,7 +19,7 @@ class Add : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         bind = DataBindingUtil.inflate(inflater, R.layout.fragment_add, container, false)
-        bind.ivAddManually.setOnClickListener {
+        bind.cvAddManually.setOnClickListener {
             findNavController().navigate(R.id.action_add_to_expenseDetails)
         }
         requireActivity().findViewById<CardView>(R.id.nu_cvBottomNavigation).visibility = View.GONE

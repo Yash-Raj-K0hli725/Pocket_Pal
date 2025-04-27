@@ -59,7 +59,7 @@
                     app:layout_constraintVertical_bias="0.5" />
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/cardView2"
+                    android:id="@+id/cv_scanBarcode"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginStart="@dimen/_16sdp"
@@ -68,7 +68,7 @@
                     android:layout_marginBottom="@dimen/_16sdp"
                     android:clickable="true"
                     app:cardCornerRadius="32dp"
-                    app:layout_constraintBottom_toTopOf="@id/cardView3"
+                    app:layout_constraintBottom_toTopOf="@id/cv_addManually"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -108,7 +108,7 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/cardView3"
+                    android:id="@+id/cv_addManually"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginStart="@dimen/_16sdp"
@@ -119,7 +119,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/cardView2"
+                    app:layout_constraintTop_toBottomOf="@id/cv_scanBarcode"
                     app:layout_constraintVertical_bias="1">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
