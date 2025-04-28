@@ -17,34 +17,6 @@ class ExpenseDetails : Fragment() {
     ): View {
         bind = DataBindingUtil.inflate(inflater, R.layout.fragment_expense_details, container, false)
 
-        bind.apply {
-            rbIncome.visibility = View.GONE
-            rbExpense.isChecked = true
-            rbTransfer.visibility = View.GONE
-            tvTransfer.visibility = View.VISIBLE
-
-            tvIncome.setOnClickListener {
-                rbIncome.isChecked = true
-                rbIncome.visibility = View.VISIBLE
-                rbExpense.visibility = View.GONE
-                rbTransfer.visibility = View.GONE
-            }
-
-            tvExpense.setOnClickListener {
-                rbExpense.isChecked = true
-                rbIncome.visibility = View.GONE
-                rbExpense.visibility = View.VISIBLE
-                rbTransfer.visibility = View.GONE
-            }
-
-            tvTransfer.setOnClickListener {
-                rbTransfer.isChecked = true
-                rbIncome.visibility = View.GONE
-                rbExpense.visibility = View.GONE
-                rbTransfer.visibility = View.VISIBLE
-            }
-        }
-
         return bind.root
     }
 }
