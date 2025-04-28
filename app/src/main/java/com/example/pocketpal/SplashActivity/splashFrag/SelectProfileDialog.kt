@@ -1,7 +1,6 @@
 package com.example.pocketpal.SplashActivity.splashFrag
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,12 +25,12 @@ class SelectProfileDialog : DialogFragment() {
             container,
             false
         )
-        setButtonClickListner()
+        setButtonClickListener()
         // Inflate the layout for this fragment
         return bind.root
     }
 
-    private fun setButtonClickListner() {
+    private fun setButtonClickListener() {
         val btns = listOf(
             bind.maleA,
             bind.maleK,

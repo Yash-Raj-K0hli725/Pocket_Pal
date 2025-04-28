@@ -7,15 +7,17 @@ import com.example.pocketpal.database.ExpenseRepository
 import com.example.pocketpal.database.UserDetails
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.time.LocalDate
+import java.util.Date
 
 class MainViewModel(private val expenseRepository: ExpenseRepository) : ViewModel() {
-    fun insertExpense(amount: Int, category: String, date: Long, paymentMode: String, note: String? = null) {
+    fun insertExpense(type: Int, amount: Int, category: String, date: LocalDate, paymentMode: Int, note: String? = null) {
         viewModelScope.launch(Dispatchers.IO) {
-            expenseRepository.insertExpense(amount, category, date, paymentMode,  note)
+            expenseRepository.insertExpense(type, amount, category, date, paymentMode, note)
         }
     }
 
-    fun getUserDetails() : LiveData<UserDetails> {
+    fun getUserDetails(): LiveData<UserDetails> {
         return expenseRepository.getUserDetails()
     }
 }

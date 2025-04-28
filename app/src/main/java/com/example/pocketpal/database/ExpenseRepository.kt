@@ -1,8 +1,11 @@
 package com.example.pocketpal.database
 
+import java.time.LocalDate
+import java.util.Date
+
 class ExpenseRepository(private val expenseDatabase: ExpenseDatabase) {
-    suspend fun insertExpense(amount: Int, category: String, date: Long, paymentMode: String, note: String? = null) {
-        expenseDatabase.databaseDao().insertExpense(Expense(amount, category, date, paymentMode, note))
+    suspend fun insertExpense(type: Int,amount: Int, category: String, date: LocalDate, paymentMode: Int, note: String? = null) {
+        expenseDatabase.databaseDao().insertExpense(Expense(type, amount, category, date, paymentMode, note))
     }
 
     suspend fun updateExpense(expense: Expense) = expenseDatabase.databaseDao().updateExpense(expense)

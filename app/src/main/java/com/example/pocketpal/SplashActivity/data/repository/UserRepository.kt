@@ -1,6 +1,5 @@
 package com.example.pocketpal.SplashActivity.data.repository
 
-import androidx.lifecycle.LiveData
 import com.example.pocketpal.database.DatabaseDao
 import com.example.pocketpal.database.UserDetails
 
@@ -10,8 +9,8 @@ class UserRepository(private val databaseDao: DatabaseDao) {
         email: String,
         password: String,
         monthlyBudget: Long,
+        income: Long,
         imageName: String,
-        income: Long
     ) {
         databaseDao.insertUserDetails(
             UserDetails(
@@ -19,15 +18,11 @@ class UserRepository(private val databaseDao: DatabaseDao) {
                 email,
                 password,
                 monthlyBudget,
-                imageName = imageName,
-                income = income,
-                id = 1
+                income,
+                imageName,
+                1
             )
         )
-    }
-
-    fun getUserDetails(): LiveData<UserDetails> {
-        return databaseDao.getUserDetails()
     }
 
     suspend fun checkIfUserExists(): Int {

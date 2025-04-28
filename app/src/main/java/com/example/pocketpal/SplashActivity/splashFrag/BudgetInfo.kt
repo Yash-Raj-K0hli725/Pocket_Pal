@@ -56,7 +56,7 @@ class BudgetInfo : Fragment() {
             if (event == Lifecycle.Event.ON_RESUME
                 && navBackStackEntry.savedStateHandle.contains("pfpName")
             ) {
-                imageName = navBackStackEntry.savedStateHandle.get("pfpName")!!
+                imageName = navBackStackEntry.savedStateHandle["pfpName"]!!
                 val imageDrawable = requireContext().resources.getIdentifier(
                     imageName,
                     "drawable",

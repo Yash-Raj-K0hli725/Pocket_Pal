@@ -1,10 +1,8 @@
 package com.example.pocketpal.SplashActivity
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pocketpal.SplashActivity.data.repository.UserRepository
-import com.example.pocketpal.database.UserDetails
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
@@ -16,16 +14,12 @@ class RegisterViewModel(private val userRepository: UserRepository) : ViewModel(
         email: String,
         password: String,
         monthlyBudget: Long,
-        imageName: String,
-        income: Long
+        income: Long,
+        imageName: String
     ) {
         viewModelScope.launch(Dispatchers.IO) {
-            userRepository.saveUserData(fullName, email, password, monthlyBudget, imageName, income)
+            userRepository.saveUserData(fullName, email, password, monthlyBudget, income, imageName)
         }
-    }
-
-    fun getUserDetails(): LiveData<UserDetails> {
-        return userRepository.getUserDetails()
     }
 
     suspend fun checkIfUserExists(): Boolean {

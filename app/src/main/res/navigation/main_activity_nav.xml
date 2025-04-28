@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_activity_nav"
     app:startDestination="@id/miHome">
     <fragment
         android:id="@+id/miHome"
         android:name="com.example.pocketpal.MainActivity.Fragments.Home"
-        android:label="Home" >
+        android:label="Home"
+        tools:layout="@layout/fragment_home"
+        >
         <action
             android:id="@+id/action_miHome_to_add"
             app:destination="@id/add" />
@@ -14,13 +17,28 @@
     <fragment
         android:id="@+id/add"
         android:name="com.example.pocketpal.MainActivity.Fragments.Add"
-        android:label="Add" >
+        android:label="Add"
+        tools:layout="@layout/fragment_add"
+        >
         <action
             android:id="@+id/action_add_to_expenseDetails"
-            app:destination="@id/expenseDetails" />
+            app:destination="@id/expenseDetails"
+            app:popUpTo="@id/miHome" />
     </fragment>
     <fragment
         android:id="@+id/expenseDetails"
         android:name="com.example.pocketpal.MainActivity.Fragments.ExpenseDetails"
-        android:label="ExpenseDetails" />
+        android:label="ExpenseDetails"
+        tools:layout="@layout/fragment_expense_details"
+        >
+        <action
+            android:id="@+id/action_expenseDetails_to_selectAccountDialog"
+            app:destination="@id/selectAccountDialog" />
+    </fragment>
+    <dialog
+        android:id="@+id/selectAccountDialog"
+        android:name="com.example.pocketpal.MainActivity.Fragments.SelectAccountDialog"
+        android:label="SelectAccountDialog"
+        tools:layout="@layout/fragment_select_account_dialog"
+        />
 </navigation>

@@ -42,7 +42,7 @@ class RegisterFragment : Fragment() {
                 val fullName = tfFullName.text.toString()
                 val email = tfEmail.text.toString()
                 val password = tfPassword.text.toString()
-                rvm.saveUserData(fullName, email, password, budget, imageName, income)
+                rvm.saveUserData(fullName, email, password, budget, income, imageName)
                 startActivity(intent)
                 requireActivity().finish()
             }

@@ -16,7 +16,9 @@
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.example.pocketpal.SplashActivity.splashFrag.RegisterFragment"
-        android:label="RegisterFragment" >
+        android:label="RegisterFragment"
+        tools:layout="@layout/fragment_register"
+        >
         <argument
             android:name="budget"
             app:argType="com.example.pocketpal.database.Budget" />
@@ -24,7 +26,9 @@
     <fragment
         android:id="@+id/splashFragment"
         android:name="com.example.pocketpal.SplashActivity.splashFrag.SplashFragment"
-        android:label="SplashFragment" >
+        android:label="SplashFragment"
+        tools:layout="@layout/fragment_splash"
+        >
         <action
             android:id="@+id/action_splashFragment_to_introPage"
             app:destination="@id/introPage"
@@ -48,5 +52,7 @@
     <dialog
         android:id="@+id/selectProfileDialog"
         android:name="com.example.pocketpal.SplashActivity.splashFrag.SelectProfileDialog"
-        android:label="SelectProfileDialog" />
+        android:label="SelectProfileDialog"
+        tools:layout="@layout/fragment_select_profile_dialog"
+        />
 </navigation>

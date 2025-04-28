@@ -1,16 +1,21 @@
 package com.example.pocketpal.database
 
 import androidx.room.TypeConverter
-import java.util.Date
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 class Converts {
+    private val formatter = DateTimeFormatter.ISO_LOCAL_DATE
+
     @TypeConverter
-    fun fromDateToLong(value: Date) : Long{
-        return value.time
+    fun fromLocalDateToString(date: LocalDate?): String? {
+        return date?.format(formatter)
     }
 
     @TypeConverter
-    fun fromLongToDate(value: Long) : Date{
-        return Date(value)
+    fun fromStringToLocalDate(dateString: String?): LocalDate? {
+        return dateString?.let {
+            LocalDate.parse(it, formatter)
+        }
     }
 }
