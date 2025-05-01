@@ -4,11 +4,14 @@
     <color name="white">#FFFFFFFF</color>
     <color name="soothingBlack">#252525</color>
     <color name="darkGreen">#11212d</color>
-    <color name="lightGreen">#253745</color>
+    <color name="lightGreen">#85BB65</color>
     <color name="gray">#9ba8ab</color>
-    <color name="peach">#ccd0cf</color>
+    <color name="peach">#fffce9</color>
     <color name="blue">#42C4FF</color>
     <color name="primary">#00b3c6</color>
     <color name="secondary">#0232DA</color>
     <color name="tertiary">#04082E</color>
+    <color name="brown">#99766f</color>
+    <color name="lightPink">#ff9aa2</color>
+    <color name="purple">#a69ee9</color>
 </resources>

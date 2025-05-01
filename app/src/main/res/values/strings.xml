@@ -37,9 +37,26 @@
     <string name="transfer">Transfer</string>
     <string name="account">Account</string>
     <string name="category">Category</string>
-    <string name="add_notes">Add notes</string>
+    <string name="add_notes">Add notes(optional)</string>
     <string name="type">Type</string>
     <string name="card">Card</string>
     <string name="upi">Upi</string>
     <string name="cash">Cash</string>
+    <string name="baby">Baby</string>
+    <string name="beauty">Beauty</string>
+    <string name="bills">Bills</string>
+    <string name="clothing">Clothing</string>
+    <string name="education">Education</string>
+    <string name="electronics">Electronics</string>
+    <string name="entertainment">Entertainment</string>
+    <string name="food">Food</string>
+    <string name="car">Car</string>
+    <string name="health">Health</string>
+    <string name="insurance">Insurance</string>
+    <string name="sport">Sport</string>
+    <string name="social">Social</string>
+    <string name="shopping">Shopping</string>
+    <string name="tax">Tax</string>
+    <string name="phone">Phone</string>
+    <string name="transportation">Transportation</string>
 </resources>

@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
@@ -34,7 +35,6 @@ class ExpenseDetails : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         bind = DataBindingUtil.inflate(inflater, R.layout.fragment_expense_details, container, false)
-
         val database = ExpenseDatabase.getDatabase(requireActivity())
         val expenseRepository = ExpenseRepository(database)
         mainViewModel =
@@ -63,6 +63,9 @@ class ExpenseDetails : Fragment() {
         bind.llAccount.setOnClickListener {
             findNavController().navigate(R.id.action_expenseDetails_to_selectAccountDialog)
         }
+        bind.llCategory.setOnClickListener{
+            findNavController().navigate(R.id.action_expenseDetails_to_selectCategoryDialog)
+        }
         getAccountType()
     }
 
@@ -75,24 +78,29 @@ class ExpenseDetails : Fragment() {
                 accountType = navBackStackEntry.savedStateHandle["accountType"]!!
                 val imageResource = when (accountType) {
                     1 -> {
+                        bind.tvAccountType.text = "CARD"
                         requireContext().resources.getIdentifier(
-                            "male_adult",
+                            "card",
                             "drawable",
                             requireContext().packageName
                         )
                     }
 
                     2 -> {
+                        bind.tvAccountType.text = "CASH"
                         requireContext().resources.getIdentifier(
-                            "male_kid",
+                            "cash",
                             "drawable",
                             requireContext().packageName
                         )
                     }
 
                     3 -> {
+//                        val color = ContextCompat.getColor(requireActivity(), R.color.blue)
+//                        bind.cvSelectAccount.setCardBackgroundColor(color)
+                        bind.tvAccountType.text = "UPI"
                         requireContext().resources.getIdentifier(
-                            "female_adult",
+                            "qr_code",
                             "drawable",
                             requireContext().packageName
                         )

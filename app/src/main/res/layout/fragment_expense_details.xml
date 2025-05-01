@@ -159,14 +159,14 @@
                 <ImageView
                     android:id="@+id/iv_selectAccount"
                     android:layout_width="26dp"
-                    android:layout_height="28dp"
-                    android:layout_marginEnd="6dp"
-                    android:src="@drawable/wallet"
-                    />
+                    android:layout_height="26dp"
+                    android:src="@drawable/wallet" />
 
                 <TextView
+                    android:id="@+id/tv_accountType"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
                     android:fontFamily="@font/alata"
                     android:text="@string/account"
                     android:textSize="16sp"
@@ -195,10 +195,10 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:src="@drawable/category"
-                    />
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:layout_marginEnd="6dp"
+                    android:src="@drawable/category" />
 
                 <TextView
                     android:layout_width="wrap_content"

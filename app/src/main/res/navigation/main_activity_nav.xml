@@ -34,11 +34,20 @@
         <action
             android:id="@+id/action_expenseDetails_to_selectAccountDialog"
             app:destination="@id/selectAccountDialog" />
+        <action
+            android:id="@+id/action_expenseDetails_to_selectCategoryDialog"
+            app:destination="@id/selectCategoryDialog" />
     </fragment>
     <dialog
         android:id="@+id/selectAccountDialog"
         android:name="com.example.pocketpal.MainActivity.Fragments.SelectAccountDialog"
         android:label="SelectAccountDialog"
         tools:layout="@layout/fragment_select_account_dialog"
+        />
+    <dialog
+        android:id="@+id/selectCategoryDialog"
+        android:name="com.example.pocketpal.MainActivity.Fragments.SelectCategoryDialog"
+        android:label="SelectCategoryDialog"
+        tools:layout="@layout/fragment_select_category_dialog"
         />
 </navigation>

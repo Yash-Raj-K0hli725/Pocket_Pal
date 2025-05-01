@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:backgroundTint="@color/peach"
+        app:cardCornerRadius="30dp"
+        app:cardUseCompatPadding="true"
+        tools:context=".MainActivity.Fragments.SelectCategoryDialog">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="16dp">
+
+            <ImageView
+                android:id="@+id/iv_baby"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_margin="16dp"
+                android:src="@drawable/baby"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/iv_beauty"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0" />
+
+            <TextView
+                android:id="@+id/tv_baby"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="@string/baby"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/iv_baby"
+                app:layout_constraintStart_toStartOf="@+id/iv_baby"
+                app:layout_constraintTop_toBottomOf="@+id/iv_baby"
+                app:layout_constraintVertical_bias="0" />
+
+            <ImageView
+                android:id="@+id/iv_beauty"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_margin="16dp"
+                android:src="@drawable/beauty"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/iv_bills"
+                app:layout_constraintStart_toEndOf="@+id/iv_baby"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0" />
+
+            <TextView
+                android:id="@+id/tv_beauty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="@string/beauty"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/iv_beauty"
+                app:layout_constraintStart_toStartOf="@+id/iv_beauty"
+                app:layout_constraintTop_toBottomOf="@+id/iv_beauty"
+                app:layout_constraintVertical_bias="0" />
+
+            <ImageView
+                android:id="@+id/iv_bills"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_margin="16dp"
+                android:src="@drawable/bills"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/iv_beauty"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0" />
+
+            <TextView
+                android:id="@+id/tv_bills"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="@string/bills"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/iv_bills"
+                app:layout_constraintStart_toStartOf="@id/iv_bills"
+                app:layout_constraintTop_toBottomOf="@id/iv_bills"
+                app:layout_constraintVertical_bias="0" />
+
+            <ImageView
+                android:id="@+id/iv_car"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_margin="16dp"
+                android:src="@drawable/car"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/iv_clothing"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_baby"
+                app:layout_constraintVertical_bias="0" />
+
+            <TextView
+                android:id="@+id/tv_car"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="@string/car"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/iv_car"
+                app:layout_constraintStart_toStartOf="@+id/iv_car"
+                app:layout_constraintTop_toBottomOf="@+id/iv_car"
+                app:layout_constraintVertical_bias="0" />
+
+            <ImageView
+                android:id="@+id/iv_clothing"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_margin="16dp"
+                android:src="@drawable/clothing"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/iv_education"
+                app:layout_constraintStart_toEndOf="@id/iv_car"
+                app:layout_constraintTop_toBottomOf="@id/tv_beauty"
+                app:layout_constraintVertical_bias="0" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="@string/clothing"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/iv_clothing"
+                app:layout_constraintStart_toStartOf="@+id/iv_clothing"
+                app:layout_constraintTop_toBottomOf="@+id/iv_clothing"
+                app:layout_constraintVertical_bias="0" />
+
+            <ImageView
+                android:id="@+id/iv_education"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_margin="16dp"
+                android:src="@drawable/education"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/iv_clothing"
+                app:layout_constraintTop_toBottomOf="@id/tv_bills"
+                app:layout_constraintVertical_bias="0" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="@string/education"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/iv_education"
+                app:layout_constraintStart_toStartOf="@+id/iv_education"
+                app:layout_constraintTop_toBottomOf="@+id/iv_education"
+                app:layout_constraintVertical_bias="0" />
+
+            <ImageView
+                android:id="@+id/iv_electronics"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_margin="16dp"
+                android:src="@drawable/electronics"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/iv_entertainment"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_car"
+                app:layout_constraintVertical_bias="0" />
+
+            <TextView
+                android:id="@+id/tv_electronics"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="@string/electronics"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/iv_electronics"
+                app:layout_constraintStart_toStartOf="@+id/iv_electronics"
+                app:layout_constraintTop_toBottomOf="@+id/iv_electronics"
+                app:layout_constraintVertical_bias="0" />
+
+            <ImageView
+                android:id="@+id/iv_entertainment"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_margin="16dp"
+                android:src="@drawable/entertainment"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/iv_food"
+                app:layout_constraintStart_toEndOf="@+id/iv_electronics"
+                app:layout_constraintTop_toBottomOf="@+id/textView"
+                app:layout_constraintVertical_bias="0" />
+
+            <TextView
+                android:id="@+id/tv_entertainment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="@string/entertainment"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/iv_entertainment"
+                app:layout_constraintStart_toStartOf="@+id/iv_entertainment"
+                app:layout_constraintTop_toBottomOf="@+id/iv_entertainment"
+                app:layout_constraintVertical_bias="0" />
+
+            <ImageView
+                android:id="@+id/iv_food"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_margin="16dp"
+                android:src="@drawable/food"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/iv_entertainment"
+                app:layout_constraintTop_toBottomOf="@+id/textView2"
+                app:layout_constraintVertical_bias="0" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="@string/food"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/iv_food"
+                app:layout_constraintStart_toStartOf="@+id/iv_food"
+                app:layout_constraintTop_toBottomOf="@+id/iv_food"
+                app:layout_constraintVertical_bias="0" />
+
+            <ImageView
+                android:id="@+id/iv_health"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_margin="16dp"
+                android:src="@drawable/health"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/iv_home"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_electronics"
+                app:layout_constraintVertical_bias="0" />
+
+            <TextView
+                android:id="@+id/tv_health"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_marginStart="16dp"
+                android:text="@string/health"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/iv_health"
+                app:layout_constraintStart_toStartOf="@+id/iv_health"
+                app:layout_constraintTop_toBottomOf="@+id/iv_health"
+                app:layout_constraintVertical_bias="0" />
+
+            <ImageView
+                android:id="@+id/iv_home"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_margin="16dp"
+                android:src="@drawable/home"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/iv_insurance"
+                app:layout_constraintStart_toEndOf="@id/iv_health"
+                app:layout_constraintTop_toBottomOf="@+id/tv_entertainment"
+                app:layout_constraintVertical_bias="0" />
+
+            <TextView
+                android:id="@+id/tv_home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="@string/home"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/iv_home"
+                app:layout_constraintStart_toStartOf="@+id/iv_home"
+                app:layout_constraintTop_toBottomOf="@+id/iv_home"
+                app:layout_constraintVertical_bias="0" />
+
+            <ImageView
+                android:id="@+id/iv_insurance"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_margin="16dp"
+                android:src="@drawable/insurance"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/iv_home"
+                app:layout_constraintTop_toBottomOf="@+id/textView3"
+                app:layout_constraintVertical_bias="0" />
+
+            <TextView
+                android:id="@+id/tv_insurance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="@string/insurance"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/iv_insurance"
+                app:layout_constraintStart_toStartOf="@+id/iv_insurance"
+                app:layout_constraintTop_toBottomOf="@+id/iv_insurance"
+                app:layout_constraintVertical_bias="0" />
+
+            <ImageView
+                android:id="@+id/iv_shopping"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_margin="16dp"
+                android:src="@drawable/shopping"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/iv_travel"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_health"
+                app:layout_constraintVertical_bias="0" />
+
+            <TextView
+                android:id="@+id/tv_shopping"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="@string/shopping"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/iv_shopping"
+                app:layout_constraintStart_toStartOf="@+id/iv_shopping"
+                app:layout_constraintTop_toBottomOf="@+id/iv_shopping"
+                app:layout_constraintVertical_bias="0" />
+
+            <ImageView
+                android:id="@+id/iv_travel"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_margin="16dp"
+                android:src="@drawable/social"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/iv_sport"
+                app:layout_constraintStart_toEndOf="@+id/iv_shopping"
+                app:layout_constraintTop_toBottomOf="@+id/tv_home"
+                app:layout_constraintVertical_bias="0" />
+
+            <TextView
+                android:id="@+id/tv_travel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="@string/social"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/iv_travel"
+                app:layout_constraintStart_toStartOf="@+id/iv_travel"
+                app:layout_constraintTop_toBottomOf="@+id/iv_travel"
+                app:layout_constraintVertical_bias="0" />
+
+            <ImageView
+                android:id="@+id/iv_sport"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_margin="16dp"
+                android:src="@drawable/sport"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/iv_travel"
+                app:layout_constraintTop_toBottomOf="@+id/tv_insurance"
+                app:layout_constraintVertical_bias="0" />
+
+            <TextView
+                android:id="@+id/tv_sport"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="@string/sport"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/iv_sport"
+                app:layout_constraintStart_toStartOf="@+id/iv_sport"
+                app:layout_constraintTop_toBottomOf="@+id/iv_sport"
+                app:layout_constraintVertical_bias="0" />
+
+            <ImageView
+                android:id="@+id/iv_tax"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_margin="16dp"
+                android:src="@drawable/tax"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/iv_phone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_shopping"
+                app:layout_constraintVertical_bias="0" />
+
+            <TextView
+                android:id="@+id/tv_tax"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="@string/tax"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/iv_tax"
+                app:layout_constraintStart_toStartOf="@+id/iv_tax"
+                app:layout_constraintTop_toBottomOf="@+id/iv_tax"
+                app:layout_constraintVertical_bias="0" />
+
+            <ImageView
+                android:id="@+id/iv_phone"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_margin="16dp"
+                android:src="@drawable/telephone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/iv_transportation"
+                app:layout_constraintStart_toEndOf="@+id/iv_tax"
+                app:layout_constraintTop_toBottomOf="@+id/tv_travel"
+                app:layout_constraintVertical_bias="0" />
+
+            <TextView
+                android:id="@+id/tv_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="@string/phone"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/iv_phone"
+                app:layout_constraintStart_toStartOf="@+id/iv_phone"
+                app:layout_constraintTop_toBottomOf="@+id/iv_phone"
+                app:layout_constraintVertical_bias="0" />
+
+            <ImageView
+                android:id="@+id/iv_transportation"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_margin="16dp"
+                android:src="@drawable/transportation"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/iv_phone"
+                app:layout_constraintTop_toBottomOf="@+id/tv_sport"
+                app:layout_constraintVertical_bias="0" />
+
+            <TextView
+                android:id="@+id/tv_transportation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="@string/transportation"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/iv_transportation"
+                app:layout_constraintStart_toStartOf="@+id/iv_transportation"
+                app:layout_constraintTop_toBottomOf="@+id/iv_transportation"
+                app:layout_constraintVertical_bias="0" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>
