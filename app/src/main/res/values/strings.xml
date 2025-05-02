@@ -57,6 +57,7 @@
     <string name="social">Social</string>
     <string name="shopping">Shopping</string>
     <string name="tax">Tax</string>
-    <string name="phone">Phone</string>
+    <string name="telephone">Telephone</string>
     <string name="transportation">Transportation</string>
+    <string name="initialSpentAmount">₹0</string>
 </resources>

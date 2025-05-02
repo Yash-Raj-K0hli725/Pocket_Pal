@@ -2,6 +2,7 @@ package com.example.pocketpal.MainActivity.Fragments
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -48,7 +49,6 @@ class Home : Fragment() {
                         it.imageName, "drawable", requireContext().packageName
                     )
                 bind.apply {
-                    spentAmount.text = it.monthlyBudget.toString()
                     initials.text = "Hi,$firstName"
                     userProfile.setImageResource(profileImageDrawable)
                 }
@@ -65,8 +65,16 @@ class Home : Fragment() {
         requireActivity().findViewById<CardView>(R.id.nu_cvBottomNavigation)?.let {
             it.visibility = View.VISIBLE
         }
-        requireActivity().findViewById<FloatingActionButton>(R.id.addItem)?.let{
+        requireActivity().findViewById<FloatingActionButton>(R.id.addItem)?.let {
             it.visibility = View.VISIBLE
+        }
+
+        mainViewModel.totalExpense().observe(viewLifecycleOwner) {
+            Log.d("check", "onViewCreated: $it")
+            if (it != null) {
+                Log.d("check", "onViewCreated: $it")
+                bind.spentAmount.text = "₹$it"
+            }
         }
 
     }

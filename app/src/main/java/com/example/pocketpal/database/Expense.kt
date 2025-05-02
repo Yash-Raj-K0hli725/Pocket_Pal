@@ -6,11 +6,11 @@ import java.time.LocalDate
 
 @Entity(tableName = "expense")
 data class Expense(
-    val type : Int,
+    val type : String,
     val amount: Int,
-    val category: String,
+    val category: String ?= null,
     val date: LocalDate,
-    val paymentMode: Int,
+    val paymentMode: Int ?= null,
     val note: String ?= null,
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0

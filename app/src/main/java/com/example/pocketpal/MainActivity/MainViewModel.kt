@@ -11,7 +11,7 @@ import java.time.LocalDate
 import java.util.Date
 
 class MainViewModel(private val expenseRepository: ExpenseRepository) : ViewModel() {
-    fun insertExpense(type: Int, amount: Int, category: String, date: LocalDate, paymentMode: Int, note: String? = null) {
+    fun insertExpense(type: String, amount: Int, category: String, date: LocalDate, paymentMode: Int, note: String? = null) {
         viewModelScope.launch(Dispatchers.IO) {
             expenseRepository.insertExpense(type, amount, category, date, paymentMode, note)
         }
@@ -20,4 +20,6 @@ class MainViewModel(private val expenseRepository: ExpenseRepository) : ViewMode
     fun getUserDetails(): LiveData<UserDetails> {
         return expenseRepository.getUserDetails()
     }
+
+    fun totalExpense() = expenseRepository.getTotalExpense()
 }
