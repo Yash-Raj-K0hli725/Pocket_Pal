@@ -6,12 +6,20 @@ import androidx.lifecycle.viewModelScope
 import com.example.pocketpal.database.ExpenseRepository
 import com.example.pocketpal.database.UserDetails
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import java.time.LocalDate
-import java.util.Date
 
 class MainViewModel(private val expenseRepository: ExpenseRepository) : ViewModel() {
-    fun insertExpense(type: String, amount: Int, category: String, date: LocalDate, paymentMode: Int, note: String? = null) {
+
+    fun insertExpense(
+        type: String,
+        amount: Int,
+        category: String,
+        date: LocalDate,
+        paymentMode: Int,
+        note: String? = null
+    ) {
         viewModelScope.launch(Dispatchers.IO) {
             expenseRepository.insertExpense(type, amount, category, date, paymentMode, note)
         }
@@ -22,4 +30,14 @@ class MainViewModel(private val expenseRepository: ExpenseRepository) : ViewMode
     }
 
     fun totalExpense() = expenseRepository.getTotalExpense()
+
+    suspend fun getMonthlyBudget(): Int {
+        return viewModelScope.async(Dispatchers.IO) {
+            expenseRepository.getMonthlyBudget()
+        }.await()
+    }
+
+    val expenseDetails = expenseRepository.getExpenseDetails()
+
+    val getTotalIncome = expenseRepository.getTotalIncome()
 }

@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
@@ -69,6 +70,8 @@ class ExpenseDetails : Fragment() {
                             txtViewCategory.text = "Category"
                             tvType.text = "Type"
                             tvCategory.text = "Category"
+                            llCategory.setBackgroundColor(ContextCompat.getColor(requireActivity(), R.color.white))
+                            llAccount.setBackgroundColor(ContextCompat.getColor(requireActivity(), R.color.white))
                         }
                         bind.llSave.setOnClickListener {
                             if (bind.tfExpense.text.toString().isNotEmpty()) {
@@ -91,6 +94,8 @@ class ExpenseDetails : Fragment() {
                             txtViewCategory.text = "Category"
                             tvType.text = "Type"
                             tvCategory.text = "Category"
+                            llCategory.setBackgroundColor(ContextCompat.getColor(requireActivity(), R.color.peach))
+                            llAccount.setBackgroundColor(ContextCompat.getColor(requireActivity(), R.color.peach))
                         }
                     }
 
@@ -105,6 +110,8 @@ class ExpenseDetails : Fragment() {
                             txtViewCategory.text = "Account"
                             tvType.text = "From"
                             tvCategory.text = "To"
+                            llCategory.setBackgroundColor(ContextCompat.getColor(requireActivity(), R.color.white))
+                            llAccount.setBackgroundColor(ContextCompat.getColor(requireActivity(), R.color.white))
                         }
                         bind.llSave.setOnClickListener {
                             if (bind.tfExpense.text.toString().isNotEmpty()) {
@@ -205,119 +212,12 @@ class ExpenseDetails : Fragment() {
                 && navBackStackEntry.savedStateHandle.contains("category")
             ) {
                 category = navBackStackEntry.savedStateHandle["category"]!!
-                val imageResource = when (category) {
-                    "Baby" -> requireContext().resources.getIdentifier(
-                        "baby",
-                        "drawable",
-                        requireContext().packageName
-                    )
-
-                    "Beauty" -> requireContext().resources.getIdentifier(
-                        "beauty",
-                        "drawable",
-                        requireContext().packageName
-                    )
-
-                    "Bills" -> requireContext().resources.getIdentifier(
-                        "bills",
-                        "drawable",
-                        requireContext().packageName
-                    )
-
-                    "Car" -> requireContext().resources.getIdentifier(
-                        "car",
-                        "drawable",
-                        requireContext().packageName
-                    )
-
-                    "Clothing" -> requireContext().resources.getIdentifier(
-                        "clothing",
-                        "drawable",
-                        requireContext().packageName
-                    )
-
-                    "Education" -> requireContext().resources.getIdentifier(
-                        "education",
-                        "drawable",
-                        requireContext().packageName
-                    )
-
-                    "Electronics" -> requireContext().resources.getIdentifier(
-                        "electronics",
-                        "drawable",
-                        requireContext().packageName
-                    )
-
-                    "Entertainment" -> requireContext().resources.getIdentifier(
-                        "entertainment",
-                        "drawable",
-                        requireContext().packageName
-                    )
-
-                    "Food" -> requireContext().resources.getIdentifier(
-                        "food",
-                        "drawable",
-                        requireContext().packageName
-                    )
-
-                    "Health" -> requireContext().resources.getIdentifier(
-                        "health",
-                        "drawable",
-                        requireContext().packageName
-                    )
-
-                    "Home" -> requireContext().resources.getIdentifier(
-                        "home",
-                        "drawable",
-                        requireContext().packageName
-                    )
-
-                    "Insurance" -> requireContext().resources.getIdentifier(
-                        "insurance",
-                        "drawable",
-                        requireContext().packageName
-                    )
-
-                    "Shopping" -> requireContext().resources.getIdentifier(
-                        "shopping",
-                        "drawable",
-                        requireContext().packageName
-                    )
-
-                    "Social" -> requireContext().resources.getIdentifier(
-                        "social",
-                        "drawable",
-                        requireContext().packageName
-                    )
-
-                    "Sport" -> requireContext().resources.getIdentifier(
-                        "sport",
-                        "drawable",
-                        requireContext().packageName
-                    )
-
-                    "Tax" -> requireContext().resources.getIdentifier(
-                        "tax",
-                        "drawable",
-                        requireContext().packageName
-                    )
-
-                    "Telephone" -> requireContext().resources.getIdentifier(
-                        "telephone",
-                        "drawable",
-                        requireContext().packageName
-                    )
-
-                    "Transportation" -> requireContext().resources.getIdentifier(
-                        "transportation",
-                        "drawable",
-                        requireContext().packageName
-                    )
-
-                    else -> {
-                        0
-                    }
-                }
+                val imageName = category.lowercase()
+                val imageResource = requireContext().resources.getIdentifier(
+                    "$imageName",
+                    "drawable",
+                    requireContext().packageName
+                )
 
                 bind.ivSelectCategory.setImageResource(imageResource)
 
@@ -346,6 +246,7 @@ class ExpenseDetails : Fragment() {
     }
 
     private fun checkInputFields(): Boolean {
-        return bind.tfExpense.text.toString().isNotEmpty() && accountType != 0 && category.isNotEmpty() && type.isNotEmpty()
+        return bind.tfExpense.text.toString()
+            .isNotEmpty() && accountType != 0 && category.isNotEmpty() && type.isNotEmpty()
     }
 }

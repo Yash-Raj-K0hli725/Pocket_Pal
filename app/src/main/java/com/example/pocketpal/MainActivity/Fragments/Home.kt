@@ -17,6 +17,7 @@ import com.example.pocketpal.database.ExpenseDatabase
 import com.example.pocketpal.database.ExpenseRepository
 import com.example.pocketpal.databinding.FragmentHomeBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import java.time.LocalDate
 
 class Home : Fragment() {
     private lateinit var bind: FragmentHomeBinding
@@ -76,7 +77,6 @@ class Home : Fragment() {
                 bind.spentAmount.text = "₹$it"
             }
         }
-
     }
 
 }

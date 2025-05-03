@@ -54,7 +54,11 @@ class MainActivity : AppCompatActivity() {
 
         bind.addItem.setOnClickListener {
             it.visibility = View.GONE
-            navController.navigate(R.id.action_miHome_to_add)
+            if (bind.bottomNavigationView.selectedItemId == R.id.miHome) {
+                navController.navigate(R.id.action_miHome_to_add)
+            } else {
+                navController.navigate(R.id.action_miRecords_to_add)
+            }
         }
     }
 
