@@ -3,10 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/item_records"
         android:layout_width="match_parent"
-        android:layout_height="90dp"
-        android:background="@color/peach"
-        android:padding="15dp">
+        android:layout_height="70dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="5dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="@drawable/clickable_background">
 
         <ImageView
             android:id="@+id/iv_category"

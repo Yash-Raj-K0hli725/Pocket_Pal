@@ -3,12 +3,12 @@ package com.example.pocketpal.MainActivity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.pocketpal.database.Expense
 import com.example.pocketpal.database.ExpenseRepository
 import com.example.pocketpal.database.UserDetails
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
-import java.time.LocalDate
 
 class MainViewModel(private val expenseRepository: ExpenseRepository) : ViewModel() {
 
@@ -16,7 +16,7 @@ class MainViewModel(private val expenseRepository: ExpenseRepository) : ViewMode
         type: String,
         amount: Int,
         category: String,
-        date: LocalDate,
+        date: String,
         paymentMode: Int,
         note: String? = null
     ) {
@@ -40,4 +40,16 @@ class MainViewModel(private val expenseRepository: ExpenseRepository) : ViewMode
     val expenseDetails = expenseRepository.getExpenseDetails()
 
     val getTotalIncome = expenseRepository.getTotalIncome()
+
+    fun deleteExpense(expense: Expense){
+        viewModelScope.launch(Dispatchers.IO) {
+            expenseRepository.deleteExpense(expense)
+        }
+    }
+
+    fun updateExpense(expense: Expense){
+        viewModelScope.launch(Dispatchers.IO) {
+            expenseRepository.updateExpense(expense)
+        }
+    }
 }

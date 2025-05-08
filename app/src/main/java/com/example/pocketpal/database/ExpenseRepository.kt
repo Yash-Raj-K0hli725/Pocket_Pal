@@ -1,14 +1,13 @@
 package com.example.pocketpal.database
 
 import androidx.lifecycle.LiveData
-import java.time.LocalDate
 
 class ExpenseRepository(private val expenseDatabase: ExpenseDatabase) {
     suspend fun insertExpense(
         type: String,
         amount: Int,
         category: String,
-        date: LocalDate,
+        date: String,
         paymentMode: Int,
         note: String? = null
     ) {

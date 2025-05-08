@@ -97,21 +97,11 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_Expense"
                 style="@style/Widget.Material3.Button.OutlinedButton"
-                android:enabled="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:enabled="true"
                 android:fontFamily="@font/alata"
                 android:text="@string/expense" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_Transfer"
-                style="@style/Widget.Material3.Button.OutlinedButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:enabled="true"
-                android:fontFamily="@font/alata"
-                android:text="@string/transfer" />
-
 
         </com.google.android.material.button.MaterialButtonToggleGroup>
 
@@ -194,8 +184,8 @@
             <LinearLayout
                 android:id="@+id/ll_category"
                 android:layout_width="match_parent"
-                android:background="@color/peach"
                 android:layout_height="match_parent"
+                android:background="@color/peach"
                 android:gravity="center"
                 android:orientation="horizontal">
 

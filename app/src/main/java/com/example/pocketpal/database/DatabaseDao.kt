@@ -30,7 +30,7 @@ interface DatabaseDao {
     @Query("SELECT * FROM expense WHERE type = 'Expense' ORDER BY id DESC")
     fun getExpenseDetails(): LiveData<List<Expense>>
 
-    @Query("SELECT SUM(amount) FROM expense WHERE type IN ('Expense', 'Transfer')")
+    @Query("SELECT SUM(amount) FROM expense WHERE type ='Expense'")
     fun getTotalExpense(): LiveData<Long>
 
     @Query("SELECT monthlyBudget FROM userDetails WHERE id=1")

@@ -1,15 +1,22 @@
 package com.example.pocketpal.MainActivity.Fragments
 
 import android.annotation.SuppressLint
+import android.app.Notification
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.cardview.widget.CardView
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.example.pocketpal.MainActivity.MainViewModel
 import com.example.pocketpal.MainActivity.MainViewModelFactory
 import com.example.pocketpal.R
@@ -17,6 +24,8 @@ import com.example.pocketpal.database.ExpenseDatabase
 import com.example.pocketpal.database.ExpenseRepository
 import com.example.pocketpal.databinding.FragmentHomeBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.time.LocalDate
 
 class Home : Fragment() {

@@ -9,6 +9,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavArgs
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pocketpal.MainActivity.MainViewModel
 import com.example.pocketpal.MainActivity.MainViewModelFactory
@@ -45,11 +48,15 @@ class Records : Fragment() {
         requireActivity().findViewById<FloatingActionButton>(R.id.addItem)?.let {
             it.visibility = View.VISIBLE
         }
+        recordsTopDetails()
+        recordsAdapter()
+    }
 
+    private fun recordsTopDetails() {
         mainViewModel.totalExpense().observe(viewLifecycleOwner) {
             if (it != null) {
                 bind.expenseText.text = "-₹${it.toString()}"
-            }else{
+            } else {
                 bind.expenseText.text = "-₹0"
             }
         }
@@ -64,8 +71,15 @@ class Records : Fragment() {
             val monthlyBudget = mainViewModel.getMonthlyBudget()
             bind.budgetText.text = "₹$monthlyBudget"
         }
+    }
 
-        val adapter = RecordsAdapter(mainViewModel, requireContext())
+    private fun recordsAdapter() {
+        val navController = requireActivity().findNavController(R.id.mainHost)
+        val adapter = RecordsAdapter(mainViewModel, requireContext(), navController){ expense ->
+            findNavController().navigate(
+                RecordsDirections.actionMiRecordsToEDDialog(expense)
+            )
+        }
         bind.apply {
             rvExpense.adapter = adapter
             rvExpense.layoutManager = LinearLayoutManager(requireActivity())

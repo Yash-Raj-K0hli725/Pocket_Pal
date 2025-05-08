@@ -3,13 +3,18 @@ package com.example.pocketpal.MainActivity
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.RecyclerView
+import com.example.pocketpal.R
 import com.example.pocketpal.database.Expense
 import com.example.pocketpal.databinding.ItemExpenseBinding
 
 class RecordsAdapter(
     private val mainViewModel: MainViewModel,
-    private val context: Context
+    private val context: Context,
+    private val navController: NavController,
+    private val onClickListener: (Expense) -> Unit
 ) : RecyclerView.Adapter<RecordsAdapter.RecordsAdapter>() {
 
     private var expenseDetails: List<Expense> = emptyList()
@@ -42,25 +47,29 @@ class RecordsAdapter(
             )
             ivCategory.setImageResource(imageResource)
             tvCategory.text = currentExpense.category
-            val accountTypeImageName = when(currentExpense.paymentMode){
+            val accountTypeImageName = when (currentExpense.paymentMode) {
                 1 -> "card"
                 2 -> "cash"
                 3 -> "qr_code"
                 else -> ""
             }
-            val accountTypeImageResource  = context.resources.getIdentifier(
+            val accountTypeImageResource = context.resources.getIdentifier(
                 "$accountTypeImageName",
                 "drawable",
                 context.packageName
             )
             ivAccountType.setImageResource(accountTypeImageResource)
-            val accountTypeText = when(currentExpense.paymentMode){
+            val accountTypeText = when (currentExpense.paymentMode) {
                 1 -> "Card"
                 2 -> "Cash"
                 3 -> "Upi"
                 else -> ""
             }
             tvAccountType.text = accountTypeText
+
+            itemRecords.setOnClickListener {
+                onClickListener(currentExpense)
+            }
         }
     }
 

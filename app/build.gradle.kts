@@ -51,6 +51,8 @@ dependencies {
     //Navigation
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.androidx.annotation)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
 
     //database
     val room_version = "2.6.1"
@@ -59,6 +61,17 @@ dependencies {
     implementation("androidx.room:room-ktx:$room_version")
 
     ksp("androidx.room:room-compiler:$room_version")
+
+    // CameraX
+    val camerax_version = "1.4.2"
+    implementation("androidx.camera:camera-core:$camerax_version")
+    implementation("androidx.camera:camera-camera2:$camerax_version")
+    implementation("androidx.camera:camera-lifecycle:$camerax_version")
+    implementation("androidx.camera:camera-view:$camerax_version")
+
+// ML Kit Text Recognition
+    implementation("com.google.mlkit:text-recognition:16.0.1")
+
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

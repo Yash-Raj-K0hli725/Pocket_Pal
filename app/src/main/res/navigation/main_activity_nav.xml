@@ -8,8 +8,7 @@
         android:id="@+id/miHome"
         android:name="com.example.pocketpal.MainActivity.Fragments.Home"
         android:label="Home"
-        tools:layout="@layout/fragment_home"
-        >
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_miHome_to_add"
             app:destination="@id/add" />
@@ -21,38 +20,39 @@
         android:id="@+id/add"
         android:name="com.example.pocketpal.MainActivity.Fragments.Add"
         android:label="Add"
-        tools:layout="@layout/fragment_add"
-        >
+        tools:layout="@layout/fragment_add">
         <action
             android:id="@+id/action_add_to_expenseDetails"
-            app:destination="@id/expenseDetails"
-            app:popUpTo="@id/miHome" />
+            app:destination="@id/expenseDetails" />
+        <action
+            android:id="@+id/action_add_to_OCR"
+            app:destination="@id/OCR" />
     </fragment>
     <fragment
         android:id="@+id/expenseDetails"
         android:name="com.example.pocketpal.MainActivity.Fragments.ExpenseDetails"
         android:label="ExpenseDetails"
-        tools:layout="@layout/fragment_expense_details"
-        >
+        tools:layout="@layout/fragment_expense_details">
         <action
             android:id="@+id/action_expenseDetails_to_selectAccountDialog"
             app:destination="@id/selectAccountDialog" />
         <action
             android:id="@+id/action_expenseDetails_to_selectCategoryDialog"
             app:destination="@id/selectCategoryDialog" />
+        <argument
+            android:name="expenseDetails"
+            app:argType="com.example.pocketpal.database.Expense" />
     </fragment>
     <dialog
         android:id="@+id/selectAccountDialog"
         android:name="com.example.pocketpal.MainActivity.Fragments.SelectAccountDialog"
         android:label="SelectAccountDialog"
-        tools:layout="@layout/fragment_select_account_dialog"
-        />
+        tools:layout="@layout/fragment_select_account_dialog" />
     <dialog
         android:id="@+id/selectCategoryDialog"
         android:name="com.example.pocketpal.MainActivity.Fragments.SelectCategoryDialog"
         android:label="SelectCategoryDialog"
-        tools:layout="@layout/fragment_select_category_dialog"
-        />
+        tools:layout="@layout/fragment_select_category_dialog" />
     <fragment
         android:id="@+id/miRecords"
         android:name="com.example.pocketpal.MainActivity.Fragments.Records"
@@ -61,5 +61,28 @@
         <action
             android:id="@+id/action_miRecords_to_add"
             app:destination="@id/add" />
+        <action
+            android:id="@+id/action_miRecords_to_EDDialog"
+            app:destination="@id/EDDialog" />
     </fragment>
+    <dialog
+        android:id="@+id/EDDialog"
+        android:name="com.example.pocketpal.MainActivity.Fragments.EDDialog"
+        android:label="EDDialog"
+        tools:layout="@layout/fragment_e_d_dialog" >
+        <action
+            android:id="@+id/action_EDDialog_to_add"
+            app:destination="@id/add" />
+        <argument
+            android:name="expenseDetails"
+            app:argType="com.example.pocketpal.database.Expense" />
+        <action
+            android:id="@+id/action_EDDialog_to_expenseDetails"
+            app:destination="@id/expenseDetails" />
+    </dialog>
+    <fragment
+        android:id="@+id/OCR"
+        android:name="com.example.pocketpal.MainActivity.Fragments.OCR"
+        android:label="OCR"
+        tools:layout="@layout/fragment_ocr"/>
 </navigation>

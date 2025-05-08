@@ -13,9 +13,11 @@ import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.pocketpal.MainActivity.MainViewModel
 import com.example.pocketpal.MainActivity.MainViewModelFactory
 import com.example.pocketpal.R
+import com.example.pocketpal.database.Expense
 import com.example.pocketpal.database.ExpenseDatabase
 import com.example.pocketpal.database.ExpenseRepository
 import com.example.pocketpal.databinding.FragmentExpenseDetailsBinding
@@ -30,6 +32,7 @@ class ExpenseDetails : Fragment() {
     private var accountType: Int = 0
     private var category: String = ""
     private var type: String = "Expense"
+    private var argsId: Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -98,42 +101,25 @@ class ExpenseDetails : Fragment() {
                             llAccount.setBackgroundColor(ContextCompat.getColor(requireActivity(), R.color.peach))
                         }
                     }
-
-                    R.id.btn_Transfer -> {
-                        type = "Transfer"
-                        bind.apply {
-                            llAccount.isClickable = false
-                            llCategory.isClickable = false
-                            ivSelectAccount.setImageResource(accountImageResource)
-                            ivSelectCategory.setImageResource(accountImageResource)
-                            txtViewAccount.text = "Account"
-                            txtViewCategory.text = "Account"
-                            tvType.text = "From"
-                            tvCategory.text = "To"
-                            llCategory.setBackgroundColor(ContextCompat.getColor(requireActivity(), R.color.white))
-                            llAccount.setBackgroundColor(ContextCompat.getColor(requireActivity(), R.color.white))
-                        }
-                        bind.llSave.setOnClickListener {
-                            if (bind.tfExpense.text.toString().isNotEmpty()) {
-                                lifecycleScope.launch(Dispatchers.IO) {
-                                    saveExpenseDetails()
-                                    withContext(Dispatchers.Main) {
-                                        findNavController().popBackStack()
-                                    }
-                                }
-                            }
-                        }
-                    }
                 }
             }
         }
         bind.llSave.setOnClickListener {
-            if (checkInputFields()) {
-                lifecycleScope.launch(Dispatchers.IO) {
-                    saveExpenseDetails()
-                    withContext(Dispatchers.Main) {
-                        findNavController().popBackStack()
+            lifecycleScope.launch(Dispatchers.IO) {
+                Log.d("charu", "$argsId")
+                if (argsId == 0) {
+                    if (checkInputFields()) {
+                        saveExpenseDetails()
                     }
+                } else {
+                    if (bind.tfExpense.text.toString().toInt() != 0) {
+                        updateExpense()
+                    }
+                }
+                withContext(Dispatchers.Main) {
+                    bind.tfExpense.focusable = 0
+                    bind.tfExpense.isClickable = false
+                    findNavController().popBackStack()
                 }
             }
         }
@@ -150,6 +136,7 @@ class ExpenseDetails : Fragment() {
         }
         getAccountType()
         getCategory()
+        editExpense()
     }
 
     private fun getAccountType() {
@@ -212,6 +199,7 @@ class ExpenseDetails : Fragment() {
                 && navBackStackEntry.savedStateHandle.contains("category")
             ) {
                 category = navBackStackEntry.savedStateHandle["category"]!!
+                Log.d("charu", "$category")
                 val imageName = category.lowercase()
                 val imageResource = requireContext().resources.getIdentifier(
                     "$imageName",
@@ -238,15 +226,90 @@ class ExpenseDetails : Fragment() {
             val amount = tfExpense.text.toString().toInt()
             val category = category
             val date = LocalDate.now()
+            val dateString = date.toString()
             val paymentMode = accountType
             val note = tfAddNotes.text.toString()
 
-            mainViewModel.insertExpense(type, amount, category, date, paymentMode, note)
+            mainViewModel.insertExpense(type, amount, category, dateString, paymentMode, note)
         }
     }
 
     private fun checkInputFields(): Boolean {
         return bind.tfExpense.text.toString()
-            .isNotEmpty() && accountType != 0 && category.isNotEmpty() && type.isNotEmpty()
+            .isNotEmpty() && accountType != 0 && category.isNotEmpty()
+    }
+
+    private fun editExpense() {
+        val args = arguments?.getParcelable<Expense>("expenseDetails")
+        if (args != null) {
+            argsId = args.id
+            val argsAmount = args.amount
+            val argsCategory = args.category.toString()
+            val argsAccountType = args.paymentMode.toString().toInt()
+            val argsNote = args.note
+
+            val accountTypeText = when (argsAccountType) {
+                1 -> "Card"
+                2 -> "Cash"
+                3 -> "Upi"
+                else -> "Account"
+            }
+            val accountTypeImageImage = when (accountTypeText) {
+                "Card" -> "card"
+                "Cash" -> "cash"
+                "Upi" -> "qr_code"
+                else -> "account"
+            }
+            val accountTypeResource = requireContext().resources.getIdentifier(
+                "$accountTypeImageImage",
+                "drawable",
+                requireContext().packageName
+            )
+            val categoryImageResource = requireContext().resources.getIdentifier(
+                "${argsCategory.lowercase()}",
+                "drawable",
+                requireContext().packageName
+            )
+
+            bind.apply {
+                txtViewAccount.text = accountTypeText.uppercase()
+                ivSelectAccount.setImageResource(accountTypeResource)
+                txtViewCategory.text = argsCategory
+                ivSelectCategory.setImageResource(categoryImageResource)
+                tfExpense.setText("$argsAmount")
+                tfAddNotes.setText("$argsNote")
+            }
+        }
+    }
+
+    private fun updateExpense() {
+        val args: ExpenseDetailsArgs by navArgs()
+        argsId = args.expenseDetails.id
+        var argsCategory = args.expenseDetails.category.toString()
+        val argsDate = args.expenseDetails.date.toString()
+        var argsAccountType = args.expenseDetails.paymentMode ?: 0
+
+        bind.apply {
+            val argsAmount = tfExpense.text.toString().toInt()
+            if (category.isNotEmpty()) {
+                argsCategory = category
+            }
+            if (accountType != 0) {
+                argsAccountType = accountType
+            }
+            val argsNote = tfAddNotes.text.toString()
+
+            mainViewModel.updateExpense(
+                Expense(
+                    type,
+                    argsAmount,
+                    argsCategory,
+                    argsDate,
+                    argsAccountType,
+                    argsNote,
+                    argsId
+                )
+            )
+        }
     }
 }

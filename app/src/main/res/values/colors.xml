@@ -7,6 +7,7 @@
     <color name="lightGreen">#85BB65</color>
     <color name="gray">#9ba8ab</color>
     <color name="peach">#fffce9</color>
+    <color name="ripple">#CCC9B2</color>
     <color name="blue">#42C4FF</color>
     <color name="primary">#00b3c6</color>
     <color name="secondary">#0232DA</color>
@@ -14,4 +15,5 @@
     <color name="brown">#99766f</color>
     <color name="lightPink">#ff9aa2</color>
     <color name="purple">#a69ee9</color>
+    <color name="green">#084f09</color>
 </resources>
