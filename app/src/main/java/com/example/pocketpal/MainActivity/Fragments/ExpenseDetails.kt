@@ -106,20 +106,24 @@ class ExpenseDetails : Fragment() {
         }
         bind.llSave.setOnClickListener {
             lifecycleScope.launch(Dispatchers.IO) {
-                Log.d("charu", "$argsId")
-                if (argsId == 0) {
-                    if (checkInputFields()) {
-                        saveExpenseDetails()
+                if (argsId != 0 && bind.tfExpense.text.toString().toInt() != 0) {
+                    updateExpense()
+
+                    withContext(Dispatchers.Main) {
+                        bind.tfExpense.focusable = 0
+                        bind.tfExpense.isClickable = false
+                        findNavController().popBackStack()
                     }
                 } else {
-                    if (bind.tfExpense.text.toString().toInt() != 0) {
-                        updateExpense()
+                    if (checkInputFields()) {
+                        saveExpenseDetails()
+
+                        withContext(Dispatchers.Main) {
+                            bind.tfExpense.focusable = 0
+                            bind.tfExpense.isClickable = false
+                            findNavController().popBackStack()
+                        }
                     }
-                }
-                withContext(Dispatchers.Main) {
-                    bind.tfExpense.focusable = 0
-                    bind.tfExpense.isClickable = false
-                    findNavController().popBackStack()
                 }
             }
         }
@@ -199,7 +203,6 @@ class ExpenseDetails : Fragment() {
                 && navBackStackEntry.savedStateHandle.contains("category")
             ) {
                 category = navBackStackEntry.savedStateHandle["category"]!!
-                Log.d("charu", "$category")
                 val imageName = category.lowercase()
                 val imageResource = requireContext().resources.getIdentifier(
                     "$imageName",
@@ -223,7 +226,7 @@ class ExpenseDetails : Fragment() {
 
     private fun saveExpenseDetails() {
         bind.apply {
-            val amount = tfExpense.text.toString().toInt()
+            val amount = tfExpense.text.toString().trim().toIntOrNull() ?: 0
             val category = category
             val date = LocalDate.now()
             val dateString = date.toString()

@@ -72,6 +72,10 @@ dependencies {
 // ML Kit Text Recognition
     implementation("com.google.mlkit:text-recognition:16.0.1")
 
+    //Barcode Scanner
+    implementation("com.google.mlkit:barcode-scanning:17.2.0")
+
+
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

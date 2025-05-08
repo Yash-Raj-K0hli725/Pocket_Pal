@@ -18,20 +18,31 @@ import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import com.example.pocketpal.MainActivity.BarcodeAnalyzer
+import com.example.pocketpal.MainActivity.MainViewModel
+import com.example.pocketpal.MainActivity.MainViewModelFactory
 import com.example.pocketpal.R
+import com.example.pocketpal.database.ExpenseDatabase
+import com.example.pocketpal.database.ExpenseRepository
 import com.example.pocketpal.databinding.FragmentOcrBinding
 import com.google.android.gms.tasks.Task
 import com.google.common.util.concurrent.ListenableFuture
+import com.google.mlkit.vision.barcode.common.Barcode
 import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.text.Text
 import com.google.mlkit.vision.text.TextRecognition
 import com.google.mlkit.vision.text.latin.TextRecognizerOptions
+import java.util.concurrent.Executors
 
 class OCR : Fragment() {
     private lateinit var bind: FragmentOcrBinding
     private lateinit var cameraProviderFuture: ListenableFuture<ProcessCameraProvider>
-    private lateinit var imageCapture: ImageCapture
+//    private lateinit var imageCapture: ImageCapture
+    private lateinit var mainViewModel: MainViewModel
 
+    private val cameraExecutor = Executors.newSingleThreadExecutor()
     private val selectImage = registerForActivityResult(
         ActivityResultContracts.GetContent()
     ) { uri: Uri? ->
@@ -43,6 +54,11 @@ class OCR : Fragment() {
     ): View {
         bind = DataBindingUtil.inflate(inflater, R.layout.fragment_ocr, container, false)
         cameraProviderFuture = ProcessCameraProvider.getInstance(requireContext())
+
+        val database = ExpenseDatabase.getDatabase(requireActivity())
+        val expenseRepository = ExpenseRepository(database)
+        mainViewModel =
+            ViewModelProvider(requireActivity(), MainViewModelFactory(expenseRepository))[MainViewModel::class.java]
 
         return bind.root
     }
@@ -58,11 +74,17 @@ class OCR : Fragment() {
                 cvUploadFromGallery.alpha = 0.7f
                 cvCamera.alpha = 0.7f
             }
-            takePhoto()
+//            takePhoto()
         }
 
         bind.cvUploadFromGallery.setOnClickListener {
             selectImage.launch("image/*")
+        }
+
+        mainViewModel.barcode.observe(viewLifecycleOwner) {
+            if (it != null) {
+                Log.d("BARCODE", "$it")
+            }
         }
     }
 
@@ -76,86 +98,72 @@ class OCR : Fragment() {
             val cameraSelector: CameraSelector =
                 CameraSelector.Builder().requireLensFacing(CameraSelector.LENS_FACING_BACK).build()
 
-//            var camera = cameraProvider.bindToLifecycle(this as LifecycleOwner, cameraSelector, preview)
+//            imageCapture = ImageCapture.Builder()
+//                .setCaptureMode(ImageCapture.CAPTURE_MODE_MINIMIZE_LATENCY)
+//                .build()
 
-            imageCapture = ImageCapture.Builder()
-                .setCaptureMode(ImageCapture.CAPTURE_MODE_MINIMIZE_LATENCY)
+            val imageAnalysis = ImageAnalysis.Builder()
+                .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
                 .build()
+                .also {
+                    it.setAnalyzer(cameraExecutor, BarcodeAnalyzer { value ->
+//                        Log.d("BARCODE", it.toString())
+                        mainViewModel.onBarcodeScanned(value)
+                    })
+                }
 
             cameraProvider.unbindAll()
             cameraProvider.bindToLifecycle(
                 viewLifecycleOwner,
                 cameraSelector,
                 preview,
-                imageCapture
+//                imageCapture,
+                imageAnalysis
             )
         }, ContextCompat.getMainExecutor(requireContext()))
     }
 
+//    private fun takePhoto() {
+//        imageCapture.takePicture(ContextCompat.getMainExecutor(requireContext()),
+//            object : ImageCapture.OnImageCapturedCallback() {
+//                @OptIn(ExperimentalGetImage::class)
+//                override fun onCaptureSuccess(imageProxy: ImageProxy) {
+//                    Log.d("CameraX", "Capture successful")
+//                    super.onCaptureSuccess(imageProxy)
+//                    val mediaImage = imageProxy.image
+//                    if (mediaImage != null) {
+//                        val inputImage = InputImage.fromMediaImage(
+//                            mediaImage, imageProxy.imageInfo.rotationDegrees
+//                        )
+//                        scanTextFromImage(inputImage)
+//                        Log.d("CameraX", "InputImage created")
+//                    }
+//                    imageProxy.close()
+//                }
+//            })
+//    }
 
-    private fun takePhoto() {
-        imageCapture.takePicture(ContextCompat.getMainExecutor(requireContext()),
-            object : ImageCapture.OnImageCapturedCallback() {
-                @OptIn(ExperimentalGetImage::class)
-                override fun onCaptureSuccess(imageProxy: ImageProxy) {
-                    Log.d("CameraX", "Capture successful")
-                    super.onCaptureSuccess(imageProxy)
-                    val mediaImage = imageProxy.image
-                    if (mediaImage != null) {
-                        val inputImage = InputImage.fromMediaImage(
-                            mediaImage, imageProxy.imageInfo.rotationDegrees
-                        )
-                        scanImage(inputImage)
-                        Log.d("CameraX", "InputImage created")
-                    }
-                    imageProxy.close()
-                }
-            })
-    }
+//    private fun scanTextFromImage(image: InputImage) {
+//        val recognizer = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS)
+//        recognizer.process(image)
+//            .addOnSuccessListener { visionText ->
+//                val rawText = visionText.text
+//                Log.d("BARCODE", "Raw Text: $rawText")
+//            }
+//    }
+
 
     private fun processImageUri(uri: Uri) {
         try {
             val image = InputImage.fromFilePath(requireContext(), uri)
-            scanImage(image)
+//            scanTextFromImage(image)
         } catch (e: Exception) {
             // let's see
         }
     }
 
-    private fun scanImage(image: InputImage) {
-        recognizeText(image)
-            .addOnSuccessListener { visionText ->
-                parseAndEmit(visionText)
-            }
-    }
-
-    private fun recognizeText(image: InputImage): Task<Text> {
-        val recognizer = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS)
-        return recognizer.process(image)
-    }
-
-    private fun parseAndEmit(visionText: Text) {
-        val rawText = visionText.text
-        Log.d("charu", "FULL TEXT:\n$rawText")
-        val amounts = Regex("\\d+(?:\\.\\d+)?")
-            .findAll(rawText)
-            .map { it.value.toFloatOrNull() ?: 0f }
-            .filter { it > 0f }
-            .toList()
-
-        val lastAmount = if (amounts.isNotEmpty()) {
-            // Check if the last number is an integer (i.e., no decimal point)
-            if (amounts.last() == amounts.last().toInt().toFloat()) {
-                // If it's an integer, take the second last float (if it exists)
-                amounts.getOrElse(amounts.size - 2) { amounts.last() }
-            } else {
-                // Otherwise, take the last float number
-                amounts.last()
-            }
-        } else {
-            0f
-        }
-
-        Log.d("charu", "Total Found: $lastAmount")
+    override fun onDestroy() {
+        super.onDestroy()
+        cameraExecutor.shutdown()
     }
 }

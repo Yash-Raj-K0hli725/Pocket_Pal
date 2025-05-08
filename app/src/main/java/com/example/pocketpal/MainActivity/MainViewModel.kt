@@ -1,11 +1,14 @@
 package com.example.pocketpal.MainActivity
 
+import androidx.camera.core.ImageProxy
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pocketpal.database.Expense
 import com.example.pocketpal.database.ExpenseRepository
 import com.example.pocketpal.database.UserDetails
+import com.google.mlkit.vision.common.InputImage
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
@@ -51,5 +54,12 @@ class MainViewModel(private val expenseRepository: ExpenseRepository) : ViewMode
         viewModelScope.launch(Dispatchers.IO) {
             expenseRepository.updateExpense(expense)
         }
+    }
+
+    private val _barcode = MutableLiveData<String>()
+    val barcode: LiveData<String> get() = _barcode
+
+    fun onBarcodeScanned(value: String){
+        _barcode.postValue(value)
     }
 }
