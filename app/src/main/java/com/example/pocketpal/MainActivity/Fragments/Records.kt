@@ -75,7 +75,7 @@ class Records : Fragment() {
 
     private fun recordsAdapter() {
         val navController = requireActivity().findNavController(R.id.mainHost)
-        val adapter = RecordsAdapter(mainViewModel, requireContext(), navController){ expense ->
+        val adapter = RecordsAdapter(requireActivity(), navController){ expense ->
             findNavController().navigate(
                 RecordsDirections.actionMiRecordsToEDDialog(expense)
             )

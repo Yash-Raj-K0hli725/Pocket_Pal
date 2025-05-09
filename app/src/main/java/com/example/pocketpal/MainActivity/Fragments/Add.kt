@@ -40,7 +40,7 @@ class Add : Fragment() {
     }
 
     private fun scanOCRReceipt() {
-        if (ContextCompat.checkSelfPermission(requireContext(), android.Manifest.permission.CAMERA)
+        if (ContextCompat.checkSelfPermission(requireActivity(), android.Manifest.permission.CAMERA)
             == PackageManager.PERMISSION_GRANTED
         ) {
             findNavController().navigate(R.id.action_add_to_OCR)

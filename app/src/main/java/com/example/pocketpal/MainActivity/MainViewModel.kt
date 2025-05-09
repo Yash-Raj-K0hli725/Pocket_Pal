@@ -62,4 +62,6 @@ class MainViewModel(private val expenseRepository: ExpenseRepository) : ViewMode
     fun onBarcodeScanned(value: String){
         _barcode.postValue(value)
     }
+
+    val recentTransactions = expenseRepository.getRecentTransactions()
 }

@@ -79,18 +79,18 @@ class EDDialog : DialogFragment() {
                 "Upi" -> "qr_code"
                 else -> ""
             }
-            val paymentModeImageResource = requireContext().resources.getIdentifier(
+            val paymentModeImageResource = requireActivity().resources.getIdentifier(
                 "$paymentModeImageName",
                 "drawable",
-                requireContext().packageName
+                requireActivity().packageName
             )
             ivAccountImage.setImageResource(paymentModeImageResource)
 
             val categoryImageName = args.expenseDetails.category?.lowercase()
-            val categoryImageResource = requireContext().resources.getIdentifier(
+            val categoryImageResource = requireActivity().resources.getIdentifier(
                 "$categoryImageName",
                 "drawable",
-                requireContext().packageName
+                requireActivity().packageName
             )
             ivCategoryImage.setImageResource(categoryImageResource)
             tvCategoryText.text = "${args.expenseDetails.category}"

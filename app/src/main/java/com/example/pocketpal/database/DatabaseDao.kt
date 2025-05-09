@@ -40,4 +40,7 @@ interface DatabaseDao {
             "COALESCE((SELECT SUM(amount) FROM expense WHERE type = 'Income'), 0)" +
             " + (SELECT income FROM userDetails WHERE id = 1) As totalIncome")
     fun getTotalIncome() : LiveData<Int>
+
+    @Query("SELECT * FROM expense WHERE type = 'Expense' ORDER BY id DESC LIMIT 3")
+    fun getRecentTransactions() : LiveData<List<Expense>>
 }

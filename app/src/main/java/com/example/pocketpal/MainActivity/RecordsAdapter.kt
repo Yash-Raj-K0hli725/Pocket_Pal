@@ -4,18 +4,15 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.NavController
-import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.RecyclerView
-import com.example.pocketpal.R
 import com.example.pocketpal.database.Expense
 import com.example.pocketpal.databinding.ItemExpenseBinding
 
 class RecordsAdapter(
-    private val mainViewModel: MainViewModel,
     private val context: Context,
     private val navController: NavController,
     private val onClickListener: (Expense) -> Unit
-) : RecyclerView.Adapter<RecordsAdapter.RecordsAdapter>() {
+) : RecyclerView.Adapter<RecordsAdapter.RecordsViewHolder>() {
 
     private var expenseDetails: List<Expense> = emptyList()
 
@@ -24,18 +21,18 @@ class RecordsAdapter(
         notifyDataSetChanged()
     }
 
-    inner class RecordsAdapter(val bind: ItemExpenseBinding) : RecyclerView.ViewHolder(bind.root)
+    inner class RecordsViewHolder(val bind: ItemExpenseBinding) : RecyclerView.ViewHolder(bind.root)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecordsAdapter {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecordsViewHolder {
         val bind = ItemExpenseBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return RecordsAdapter(bind)
+        return RecordsViewHolder(bind)
     }
 
     override fun getItemCount(): Int {
         return expenseDetails.size
     }
 
-    override fun onBindViewHolder(holder: RecordsAdapter, position: Int) {
+    override fun onBindViewHolder(holder: RecordsViewHolder, position: Int) {
         val currentExpense = expenseDetails[position]
         holder.bind.apply {
             spentAmount.text = "-₹${currentExpense.amount}"

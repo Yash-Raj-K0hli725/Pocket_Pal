@@ -49,15 +49,15 @@ class ExpenseDetails : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val accountImageResource = requireContext().resources.getIdentifier(
+        val accountImageResource = requireActivity().resources.getIdentifier(
             "wallet",
             "drawable",
-            requireContext().packageName
+            requireActivity().packageName
         )
-        val categoryImageResource = requireContext().resources.getIdentifier(
+        val categoryImageResource = requireActivity().resources.getIdentifier(
             "category",
             "drawable",
-            requireContext().packageName
+            requireActivity().packageName
         )
         bind.mtgSelectType.addOnButtonCheckedListener { _, checkedId, isChecked ->
             if (isChecked) {
@@ -153,28 +153,28 @@ class ExpenseDetails : Fragment() {
                 val imageResource = when (accountType) {
                     1 -> {
                         bind.txtViewAccount.text = "CARD"
-                        requireContext().resources.getIdentifier(
+                        requireActivity().resources.getIdentifier(
                             "card",
                             "drawable",
-                            requireContext().packageName
+                            requireActivity().packageName
                         )
                     }
 
                     2 -> {
                         bind.txtViewAccount.text = "CASH"
-                        requireContext().resources.getIdentifier(
+                        requireActivity().resources.getIdentifier(
                             "cash",
                             "drawable",
-                            requireContext().packageName
+                            requireActivity().packageName
                         )
                     }
 
                     3 -> {
                         bind.txtViewAccount.text = "UPI"
-                        requireContext().resources.getIdentifier(
+                        requireActivity().resources.getIdentifier(
                             "qr_code",
                             "drawable",
-                            requireContext().packageName
+                            requireActivity().packageName
                         )
                     }
 
@@ -204,10 +204,10 @@ class ExpenseDetails : Fragment() {
             ) {
                 category = navBackStackEntry.savedStateHandle["category"]!!
                 val imageName = category.lowercase()
-                val imageResource = requireContext().resources.getIdentifier(
+                val imageResource = requireActivity().resources.getIdentifier(
                     "$imageName",
                     "drawable",
-                    requireContext().packageName
+                    requireActivity().packageName
                 )
 
                 bind.ivSelectCategory.setImageResource(imageResource)
@@ -263,15 +263,15 @@ class ExpenseDetails : Fragment() {
                 "Upi" -> "qr_code"
                 else -> "account"
             }
-            val accountTypeResource = requireContext().resources.getIdentifier(
+            val accountTypeResource = requireActivity().resources.getIdentifier(
                 "$accountTypeImageImage",
                 "drawable",
-                requireContext().packageName
+                requireActivity().packageName
             )
-            val categoryImageResource = requireContext().resources.getIdentifier(
+            val categoryImageResource = requireActivity().resources.getIdentifier(
                 "${argsCategory.lowercase()}",
                 "drawable",
-                requireContext().packageName
+                requireActivity().packageName
             )
 
             bind.apply {

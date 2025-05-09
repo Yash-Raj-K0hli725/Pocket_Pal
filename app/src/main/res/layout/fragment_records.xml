@@ -6,7 +6,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/peach"
+        android:background="@color/white"
         tools:context=".MainActivity.Fragments.Records">
 
         <androidx.cardview.widget.CardView
@@ -22,7 +22,8 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="@drawable/bck_intro_page">
 
                 <TextView
                     android:id="@+id/tv_budget"
@@ -30,6 +31,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/alata"
                     android:text="@string/budget"
+                    android:textColor="@color/white"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -43,7 +45,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/alata"
-                    android:textColor="@android:color/holo_green_dark"
+                    android:textColor="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@id/tv_budget"
                     app:layout_constraintStart_toStartOf="@id/tv_budget"
@@ -56,6 +58,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/alata"
                     android:text="@string/income"
+                    android:textColor="@color/white"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -69,7 +72,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/alata"
-                    android:textColor="@android:color/holo_green_dark"
+                    android:textColor="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@id/tv_income"
                     app:layout_constraintStart_toStartOf="@id/tv_income"
@@ -81,6 +84,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/alata"
+                    android:textColor="@color/white"
                     android:text="@string/expense"
                     android:textSize="16sp"
                     android:textStyle="bold"
@@ -95,7 +99,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/alata"
-                    android:textColor="@android:color/holo_red_dark"
+                    android:textColor="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@id/tv_expense"
                     app:layout_constraintStart_toStartOf="@id/tv_expense"
@@ -113,8 +117,9 @@
             android:paddingBottom="100dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cv_records" />
+            app:layout_constraintTop_toBottomOf="@id/cv_records"
+            app:layout_constraintVertical_bias="0.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

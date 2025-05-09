@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import androidx.cardview.widget.CardView
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
@@ -17,8 +18,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pocketpal.MainActivity.MainViewModel
 import com.example.pocketpal.MainActivity.MainViewModelFactory
+import com.example.pocketpal.MainActivity.RecentTransactionsAdapter
 import com.example.pocketpal.R
 import com.example.pocketpal.database.ExpenseDatabase
 import com.example.pocketpal.database.ExpenseRepository
@@ -53,10 +57,10 @@ class Home : Fragment() {
                 val firstName = fullName.trim().substringBefore(" ").replaceFirstChar { c ->
                     return@replaceFirstChar c.uppercase()
                 }
-                val profileImageDrawable = requireContext()
+                val profileImageDrawable = requireActivity()
                     .resources
                     .getIdentifier(
-                        it.imageName, "drawable", requireContext().packageName
+                        it.imageName, "drawable", requireActivity().packageName
                     )
                 bind.apply {
                     initials.text = "Hi,$firstName"
@@ -65,6 +69,7 @@ class Home : Fragment() {
 
             }
         }
+        recentTransactionsAdapter()
 
         return bind.root
     }
@@ -84,6 +89,22 @@ class Home : Fragment() {
             if (it != null) {
                 Log.d("check", "onViewCreated: $it")
                 bind.spentAmount.text = "₹$it"
+            }
+        }
+    }
+
+    private fun recentTransactionsAdapter(){
+        val adapter = RecentTransactionsAdapter(requireActivity())
+
+        bind.apply {
+            recentTransactions.adapter = adapter
+            recentTransactions.layoutManager = LinearLayoutManager(requireActivity())
+        }
+
+        mainViewModel.recentTransactions.observe(viewLifecycleOwner){
+            Log.d("charu", it.toString())
+            if (it != null){
+                adapter.submitList(it)
             }
         }
     }

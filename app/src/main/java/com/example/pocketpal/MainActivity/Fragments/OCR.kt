@@ -53,7 +53,7 @@ class OCR : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         bind = DataBindingUtil.inflate(inflater, R.layout.fragment_ocr, container, false)
-        cameraProviderFuture = ProcessCameraProvider.getInstance(requireContext())
+        cameraProviderFuture = ProcessCameraProvider.getInstance(requireActivity())
 
         val database = ExpenseDatabase.getDatabase(requireActivity())
         val expenseRepository = ExpenseRepository(database)
@@ -120,7 +120,7 @@ class OCR : Fragment() {
 //                imageCapture,
                 imageAnalysis
             )
-        }, ContextCompat.getMainExecutor(requireContext()))
+        }, ContextCompat.getMainExecutor(requireActivity()))
     }
 
 //    private fun takePhoto() {
@@ -155,7 +155,7 @@ class OCR : Fragment() {
 
     private fun processImageUri(uri: Uri) {
         try {
-            val image = InputImage.fromFilePath(requireContext(), uri)
+            val image = InputImage.fromFilePath(requireActivity(), uri)
 //            scanTextFromImage(image)
         } catch (e: Exception) {
             // let's see
