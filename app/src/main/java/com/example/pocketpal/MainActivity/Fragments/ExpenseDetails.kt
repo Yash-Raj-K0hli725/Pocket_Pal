@@ -239,7 +239,7 @@ class ExpenseDetails : Fragment() {
 
     private fun checkInputFields(): Boolean {
         return bind.tfExpense.text.toString()
-            .isNotEmpty() && accountType != 0 && category.isNotEmpty()
+            .isNotEmpty() && accountType != 0 && category.isNotEmpty() && bind.tfExpense.text.toString().toInt() != 0
     }
 
     private fun editExpense() {

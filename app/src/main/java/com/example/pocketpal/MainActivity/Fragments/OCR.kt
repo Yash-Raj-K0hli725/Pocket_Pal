@@ -39,7 +39,8 @@ import java.util.concurrent.Executors
 class OCR : Fragment() {
     private lateinit var bind: FragmentOcrBinding
     private lateinit var cameraProviderFuture: ListenableFuture<ProcessCameraProvider>
-//    private lateinit var imageCapture: ImageCapture
+
+    //    private lateinit var imageCapture: ImageCapture
     private lateinit var mainViewModel: MainViewModel
 
     private val cameraExecutor = Executors.newSingleThreadExecutor()
@@ -65,7 +66,6 @@ class OCR : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         startCamera()
 
         bind.cvCamera.setOnClickListener {

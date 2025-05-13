@@ -113,13 +113,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun sendNotification(){
         val prefs = getSharedPreferences("notification_prefs", Context.MODE_PRIVATE)
-        val hasSent = prefs.getBoolean("has_sent_notification", false)
         lifecycleScope.launch(Dispatchers.IO) {
             budget = mainViewModel.getMonthlyBudget()
             budget = (budget * 90) / 100
         }
 
         mainViewModel.totalExpense().observe(this) {
+            val hasSent = prefs.getBoolean("has_sent_notification", false)
             if (it != null && it >= budget && !hasSent) {
                 val notification = createNotification()
                 val notificationManager = NotificationManagerCompat.from(this)

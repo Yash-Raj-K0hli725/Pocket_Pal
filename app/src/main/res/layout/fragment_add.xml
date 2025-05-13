@@ -50,7 +50,6 @@
                     android:id="@+id/imageView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/peach"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
@@ -75,6 +74,8 @@
                     app:layout_constraintVertical_bias="0">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
+                        android:background="@drawable/clickable_background"
+                        android:backgroundTint="@color/peach"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
@@ -114,6 +115,7 @@
                     android:layout_marginStart="@dimen/_16sdp"
                     android:layout_marginEnd="@dimen/_16sdp"
                     android:layout_marginBottom="@dimen/_32sdp"
+                    android:backgroundTint="@color/peach"
                     android:clickable="true"
                     app:cardCornerRadius="32dp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -124,6 +126,8 @@
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
+                        android:background="@drawable/clickable_background"
+                        android:backgroundTint="@color/peach"
                         android:layout_height="match_parent">
 
                         <ImageView

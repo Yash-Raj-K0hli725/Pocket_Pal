@@ -39,5 +39,4 @@ class BarcodeAnalyzer(
                 imageProxy.close()
             }
     }
-
 }

@@ -27,8 +27,7 @@
                 android:layout_height="match_parent"
                 android:background="@mipmap/add_image"
                 android:contentDescription="@string/add_profile_icon"
-                android:scaleType="centerCrop"
-               />
+                android:scaleType="centerCrop" />
 
         </androidx.cardview.widget.CardView>
 
@@ -136,6 +135,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtLay_Income"
             app:layout_constraintVertical_bias="0.9" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardView"
+            app:layout_constraintVertical_bias="0.5" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
