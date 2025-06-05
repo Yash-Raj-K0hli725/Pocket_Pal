@@ -33,6 +33,9 @@ interface DatabaseDao {
     @Query("SELECT SUM(amount) FROM expense WHERE type ='Expense'")
     fun getTotalExpense(): LiveData<Long>
 
+    @Query("SELECT SUM(amount) FROM expense WHERE type = 'Expense' AND date LIKE :month || '%'")
+    fun getMonthlyExpense(month: String): LiveData<Long>
+
     @Query("SELECT monthlyBudget FROM userDetails WHERE id=1")
     suspend fun getMonthlyBudget(): Int
 
@@ -43,4 +46,7 @@ interface DatabaseDao {
 
     @Query("SELECT * FROM expense WHERE type = 'Expense' ORDER BY id DESC LIMIT 3")
     fun getRecentTransactions() : LiveData<List<Expense>>
+
+    @Query("SELECT * FROM expense WHERE type = 'Expense' AND date LIKE :month || '%'")
+    fun getMonthlyTransactions(month: String): LiveData<List<Expense>>
 }

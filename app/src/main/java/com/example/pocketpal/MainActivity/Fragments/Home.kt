@@ -1,9 +1,13 @@
 package com.example.pocketpal.MainActivity.Fragments
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.content.Context
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -11,8 +15,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.cardview.widget.CardView
+import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -20,6 +26,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.work.OneTimeWorkRequestBuilder
+import com.example.pocketpal.MainActivity.BudgetNotificationWorker
 import com.example.pocketpal.MainActivity.MainViewModel
 import com.example.pocketpal.MainActivity.MainViewModelFactory
 import com.example.pocketpal.MainActivity.RecentTransactionsAdapter
@@ -30,7 +38,9 @@ import com.example.pocketpal.databinding.FragmentHomeBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.time.LocalDate
+import java.util.concurrent.TimeUnit
 
 class Home : Fragment() {
     private lateinit var bind: FragmentHomeBinding
@@ -93,7 +103,7 @@ class Home : Fragment() {
         }
     }
 
-    private fun recentTransactionsAdapter(){
+    private fun recentTransactionsAdapter() {
         val adapter = RecentTransactionsAdapter(requireActivity())
 
         bind.apply {
@@ -101,10 +111,22 @@ class Home : Fragment() {
             recentTransactions.layoutManager = LinearLayoutManager(requireActivity())
         }
 
-        mainViewModel.recentTransactions.observe(viewLifecycleOwner){
+        mainViewModel.recentTransactions.observe(viewLifecycleOwner) {
             Log.d("charu", it.toString())
-            if (it != null){
+            if (it != null) {
                 adapter.submitList(it)
+            }
+        }
+        mainViewModel.totalExpense().observe(viewLifecycleOwner) {
+            if (it != null) {
+                bind.apply {
+                    ivRecentTransactions.visibility = View.GONE
+                }
+            } else {
+                bind.apply {
+                    ivRecentTransactions.visibility = View.VISIBLE
+                }
+
             }
         }
     }

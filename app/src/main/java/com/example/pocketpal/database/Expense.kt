@@ -9,7 +9,7 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Expense(
     val type: String,
-    val amount: Int,
+    val amount: Long,
     val category: String? = null,
     val date: String,
     val paymentMode: Int? = null,

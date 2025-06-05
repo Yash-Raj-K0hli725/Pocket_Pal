@@ -41,8 +41,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:contentDescription="@string/records"
-                android:scaleType="centerCrop"
-                />
+                android:scaleType="centerCrop" />
 
         </androidx.cardview.widget.CardView>
 
@@ -170,6 +169,17 @@
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.7" />
 
+        <ImageView
+            android:id="@+id/iv_recentTransactions"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:src="@drawable/recent_transactions"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.75" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

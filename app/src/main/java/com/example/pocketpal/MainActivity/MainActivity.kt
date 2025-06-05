@@ -2,10 +2,6 @@ package com.example.pocketpal.MainActivity
 
 import android.Manifest
 import android.annotation.SuppressLint
-import android.app.Notification
-import android.app.NotificationChannel
-import android.app.NotificationManager
-import android.content.Context
 import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
 import android.os.Build
@@ -15,29 +11,22 @@ import androidx.activity.OnBackPressedCallback
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.pocketpal.R
 import com.example.pocketpal.database.ExpenseDatabase
 import com.example.pocketpal.database.ExpenseRepository
 import com.example.pocketpal.databinding.ActivityMainBinding
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     private lateinit var bind: ActivityMainBinding
     private lateinit var mainViewModel: MainViewModel
-    private var budget: Int = 0
 
     @SuppressLint("SourceLockedOrientationActivity")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -77,8 +66,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
         requestNotificationPermission()
-        createNotificationChannel()
-        sendNotification()
     }
 
     private fun requestNotificationPermission() {
@@ -90,47 +77,4 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
-
-    private fun createNotification(): Notification {
-        return NotificationCompat.Builder(this, "notification_channel")
-            .setContentTitle("Pocket Pal")
-            .setContentText("Your Budget is about to exceed!")
-            .setSmallIcon(R.drawable.analysis)
-            .setPriority(NotificationCompat.PRIORITY_HIGH)
-            .build()
-    }
-
-    private fun createNotificationChannel() {
-        val channel = NotificationChannel(
-            "notification_channel",
-            "Budget Notification",
-            NotificationManager.IMPORTANCE_HIGH
-        )
-        val manager = ContextCompat.getSystemService(this, NotificationManager::class.java)
-        manager?.createNotificationChannel(channel)
-    }
-
-    private fun sendNotification(){
-        val prefs = getSharedPreferences("notification_prefs", Context.MODE_PRIVATE)
-        lifecycleScope.launch(Dispatchers.IO) {
-            budget = mainViewModel.getMonthlyBudget()
-            budget = (budget * 90) / 100
-        }
-
-        mainViewModel.totalExpense().observe(this) {
-            val hasSent = prefs.getBoolean("has_sent_notification", false)
-            if (it != null && it >= budget && !hasSent) {
-                val notification = createNotification()
-                val notificationManager = NotificationManagerCompat.from(this)
-                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS)
-                    == PackageManager.PERMISSION_GRANTED
-                ) {
-                    notificationManager.notify(0, notification)
-                    prefs.edit().putBoolean("has_sent_notification", true).apply()
-                }
-            }
-        }
-    }
-
 }

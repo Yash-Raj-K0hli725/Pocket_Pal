@@ -69,11 +69,15 @@ dependencies {
     implementation("androidx.camera:camera-lifecycle:$camerax_version")
     implementation("androidx.camera:camera-view:$camerax_version")
 
-// ML Kit Text Recognition
+    // ML Kit Text Recognition
     implementation("com.google.mlkit:text-recognition:16.0.1")
 
     //Barcode Scanner
     implementation("com.google.mlkit:barcode-scanning:17.2.0")
+
+    //WorkManager
+    implementation("androidx.work:work-runtime-ktx:2.9.0")
+
 
 
 

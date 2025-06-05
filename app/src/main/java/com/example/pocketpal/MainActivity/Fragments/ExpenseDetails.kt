@@ -1,10 +1,17 @@
 package com.example.pocketpal.MainActivity.Fragments
 
+import android.Manifest
+import android.content.Context
+import android.content.pm.PackageManager
+import android.inputmethodservice.InputMethodService
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -14,6 +21,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.work.OneTimeWorkRequestBuilder
+import com.example.pocketpal.MainActivity.BudgetNotificationWorker
 import com.example.pocketpal.MainActivity.MainViewModel
 import com.example.pocketpal.MainActivity.MainViewModelFactory
 import com.example.pocketpal.R
@@ -25,6 +34,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.time.LocalDate
+import java.util.concurrent.TimeUnit
 
 class ExpenseDetails : Fragment() {
     private lateinit var bind: FragmentExpenseDetailsBinding
@@ -110,8 +120,7 @@ class ExpenseDetails : Fragment() {
                     updateExpense()
 
                     withContext(Dispatchers.Main) {
-                        bind.tfExpense.focusable = 0
-                        bind.tfExpense.isClickable = false
+                        hideKeyboard()
                         findNavController().popBackStack()
                     }
                 } else {
@@ -119,6 +128,7 @@ class ExpenseDetails : Fragment() {
                         saveExpenseDetails()
 
                         withContext(Dispatchers.Main) {
+                            hideKeyboard()
                             bind.tfExpense.focusable = 0
                             bind.tfExpense.isClickable = false
                             findNavController().popBackStack()
@@ -226,7 +236,7 @@ class ExpenseDetails : Fragment() {
 
     private fun saveExpenseDetails() {
         bind.apply {
-            val amount = tfExpense.text.toString().trim().toIntOrNull() ?: 0
+            val amount = tfExpense.text.toString().trim().toLongOrNull() ?: 0
             val category = category
             val date = LocalDate.now()
             val dateString = date.toString()
@@ -293,7 +303,7 @@ class ExpenseDetails : Fragment() {
         var argsAccountType = args.expenseDetails.paymentMode ?: 0
 
         bind.apply {
-            val argsAmount = tfExpense.text.toString().toInt()
+            val argsAmount = tfExpense.text.toString().toLong()
             if (category.isNotEmpty()) {
                 argsCategory = category
             }
@@ -314,5 +324,11 @@ class ExpenseDetails : Fragment() {
                 )
             )
         }
+    }
+
+    private fun hideKeyboard() {
+        val imm = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        val view = requireActivity().currentFocus ?: View(requireContext())
+        imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
 }

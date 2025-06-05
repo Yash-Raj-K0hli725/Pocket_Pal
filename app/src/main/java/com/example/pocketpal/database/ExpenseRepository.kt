@@ -1,12 +1,11 @@
 package com.example.pocketpal.database
 
 import androidx.lifecycle.LiveData
-import kotlin.math.exp
 
 class ExpenseRepository(private val expenseDatabase: ExpenseDatabase) {
     suspend fun insertExpense(
         type: String,
-        amount: Int,
+        amount: Long,
         category: String,
         date: String,
         paymentMode: Int,
@@ -25,9 +24,13 @@ class ExpenseRepository(private val expenseDatabase: ExpenseDatabase) {
 
     fun getTotalExpense(): LiveData<Long> = expenseDatabase.databaseDao().getTotalExpense()
 
+    fun getMonthlyExpense(month: String): LiveData<Long> = expenseDatabase.databaseDao().getMonthlyExpense(month)
+
     suspend fun getMonthlyBudget(): Int = expenseDatabase.databaseDao().getMonthlyBudget()
 
     fun getTotalIncome() : LiveData<Int> = expenseDatabase.databaseDao().getTotalIncome()
 
     fun getRecentTransactions() : LiveData<List<Expense>> = expenseDatabase.databaseDao().getRecentTransactions()
+
+    fun getMonthlyTransactions(month: String): LiveData<List<Expense>> = expenseDatabase.databaseDao().getMonthlyTransactions(month)
 }

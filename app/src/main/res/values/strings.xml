@@ -74,4 +74,6 @@
     <string name="login_failed">"Login failed"</string>
     <string name="ocr_text">Upload from gallery</string>
     <string name="no_notes">No notes</string>
+    <string name="no_history">No History!</string>
+    <string name="no_recent_transactions">No Recent Transactions!</string>
 </resources>
